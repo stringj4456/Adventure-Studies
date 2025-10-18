@@ -21,13 +21,13 @@ There are two fundamental ways digital data can be represented using a signal:
 
 In **current state modulation**, data is represented by the current state (or level) of the signal. Each bit corresponds directly to a particular voltage or signal level. For example, the presence or absence of voltage on a wire portrays a binary 1 or a binary 0.
 
-<img src="images/csm.png" alt="current state modulation" width="70%"/>  
+<img src="images/csm.png" alt="current state modulation" width="50%"/>  
 
 <br>
 
 Alternatively, there is **state transition modulation** where data is represented by changes (transitions) in the signal, not by the voltage level itself. The presence or absence of a transition at a specific time represents a bit. For example, a transition from low to high can be represented by a 1 while a high to low transition can be represented by a 0. 
 
-<img src="images/stm.png" alt="state transition modulation" width="70%"/>
+<img src="images/stm.png" alt="state transition modulation" width="50%"/>
 
 ### Synchronizing bits
 ### Bandwidth usage
