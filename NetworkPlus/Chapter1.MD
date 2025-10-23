@@ -46,3 +46,33 @@ Multiplexing allows multiple communications sessions to share the same physical 
 
 
 ## Layer 2: The Data Link Layer
+The data link layer is concerned with the following:
+* Packaging data into frames and transmitting those frames on the network
+* Ensuring that frames do not exceed the maximum transmission unit (MTU) of the physical media
+* Performing error detection/correction
+* Uniquely finding network devices with addresses 
+* Handling flow control
+
+In fact, the data link layer is distinct from the other layers in that it has two sublayers: MAC and LLC
+### MAC
+Characteristics of the Media Access Control (MAC) sublayer of the data link layer include the following:
+* **Physical addressing**: A common example of a Layer 2 address is a MAC address, which is a 48-bit address assigned to a device’s network interface card (NIC). The first 24 bits of the 48-bit address are the vendor code. The last 24 bits of a MAC address are assigned by the manufacturer, and they act as a serial number for the device. No two MAC addresses in the world should have the same value.
+* **Logical topology**: Layer 2 devices view a network as a logical (as opposed to physical) topology.
+* **Method of transmitting on the media**: With several devices connected to a network, there needs to be some strategy for deciding when a device sends on the media. Otherwise, multiple devices might send at the same time and interfere with one another’s transmissions.
+
+### Logical Link Control
+Characteristics of the Logical Link Control (LLC) sublayer of the data link layer include the following:
+* **Connection services**: When a device on a network receives a message from another device on the network, that recipient device can give feedback to the sender in the form of an acknowledgment message. The two main functions provided by these acknowledgment messages are as follows: 
+  * **Flow control**: Limits the amount of data a sender can send at one time; this prevents the sender from overwhelming the receiver with too much information.
+  * **Error control**: Allows the recipient of data to let the sender know whether the expected data frame was not received or whether it was received but is corrupted. The recipient figures out whether the data frame is corrupt by mathematically calculating a checksum of the data received. If the calculated checksum does not match the checksum received with the data frame, the recipient of the data draws the conclusion that the data frame is corrupted and can then notify the sender via an acknowledgment message.
+  
+* **Synchronizing transmissions**: Senders and receivers of data frames need to coordinate when a data frame is being transmitted and should be received. The three methods of performing this synchronization are detailed here: 
+  * **Isochronous**: With isochronous transmission, network devices look to a common device in the network as a clock source, which creates fixed-length time slots. Network devices can determine how much free space, if any, is available within a time slot and then insert data into an available time slot. A time slot can accommodate more than one data frame. Isochronous transmission does not need to provide clocking at the beginning of a data string (as does synchronous transmission) or for every data frame (as does asynchronous transmission). As a result, isochronous transmission uses little overhead compared to asynchronous or synchronous transmission methods. 
+  
+  * **Asynchronous**: With asynchronous transmission, network devices reference their own internal clocks, and network devices do not need to synchronize their clocks. Instead, the sender places a start bit at the beginning of each data frame and a stop bit at the end of each data frame. These start and stop bits tell the receiver when to monitor the medium for the presence of bits. An additional bit, called the parity bit, might also be added to the end of each byte in a frame to detect an error in the frame.
+
+  * **Synchronous**: With synchronous transmission, two network devices that want to communicate between themselves must agree on a clocking method to show the beginning and ending of data frames. One approach to providing this clocking is to use a separate communications channel over which a clock signal is sent. Another approach relies on specific bit combinations or control characters to indicate the beginning of a frame or a byte of data. Like asynchronous transmissions, synchronous transmissions can perform error detection. However, rather than using parity bits, synchronous communication runs a mathematical algorithm on the data to create a cyclic redundancy check (CRC). If the sender and the receiver calculate the same CRC value for the same chunk of data, the receiver can conclude that the data was not corrupted during transmission
+  
+## Layer 3: The Network Layer
+
+
