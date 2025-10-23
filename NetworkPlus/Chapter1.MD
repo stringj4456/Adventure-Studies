@@ -43,3 +43,6 @@ Multiplexing allows multiple communications sessions to share the same physical 
 * **Frequency-division multiplexing (FDM)**: FDM divides a medium’s frequency range into channels, and different communication sessions send their data over different channels. As previously described, this approach to bandwidth usage is called broadband.
 * **Orthogonal frequency-division multiplexing (OFDM)**: OFDM encodes digital data onto multiple carrier frequencies. OFDM is very popular today and is used in wideband digital communication. This makes OFDM useful in applications such as digital television and audio broadcasting, DSL Internet access, wireless networks, powerline networks, and 4G/5G mobile communications. 
 * **Orthogonal frequency-division multiple access (OFDMA)**: OFDMA is a multiuser version of the popular OFDM digital modulation scheme. It divides a wireless channel into subchannels to allow simultaneous data transmission from multiple users, enhancing network efficiency and reducing latency. Examples of devices defined by physical layer standards include legacy hubs, wireless access points, and network cabling.
+
+
+## Layer 2: The Data Link Layer
