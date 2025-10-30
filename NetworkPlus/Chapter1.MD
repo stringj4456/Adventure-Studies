@@ -19,11 +19,11 @@ There are two fundamental ways digital data can be represented using a signal:
 
 In **current state modulation**, data is represented by the current state (or level) of the signal. Each bit corresponds directly to a particular voltage or signal level. For example, the presence or absence of voltage on a wire portrays a binary 1 or a binary 0.
 
-<img src="images/csm.png" alt="current state modulation" width="50%"/>  
+<img src="images/csm.png" alt="current state modulation" width="45%"/>  
 
 Alternatively, there is **state transition modulation** where data is represented by changes (transitions) in the signal, not by the voltage level itself. The presence or absence of a transition at a specific time represents a bit. For example, a transition from low to high can be represented by a 1 while a high to low transition can be represented by a 0. 
 
-<img src="images/stm.png" alt="state transition modulation" width="50%"/>
+<img src="images/stm.png" alt="state transition modulation" width="45%"/>
 
 ### Synchronizing bits
 For two networked devices to successfully communicate at the physical layer, they must agree on when one bit stops and another bit starts. Specifically, the devices need a method to
@@ -159,6 +159,32 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
     * Alternatively, a session might be torn down because one party disconnects (either intentionally or because of an error condition)
     * If one party disconnects, the other party can detect a loss of communication with that party and tear down its side of the session
     * Session Initiation Protocol (SIP) is an example of a session layer protocol, which can help set up, support, and tear down a voice or video connection
+
+## Layer 6: The Presentation Layer
+* The presentation layer formats the data being exchanged and secures that data with encryption
+* The following list describes the functions involved in data formatting and encryption in more detail: 
+  * **Data formatting**:
+    * As an example of how the presentation layer handles data formatting, consider how text is formatted. Some applications might format text using American Standard Code for Information Interchange (ASCII), while other applications might format text using Extended Binary Coded Decimal Interchange Code (EBCDIC)
+    * The presentation layer handles formatting the text (or other types of data, such as multimedia or graphics files) in a format that allows compatibility between the communicating devices
+  * **Encryption**:
+    * Imagine that you are sending sensitive information over a network (for example, your credit card number or bank password)
+    * If a malicious user were to intercept your transmission, they might be able to obtain this sensitive information
+    * To add a layer of security for such transmissions, encryption can be used to scramble (encrypt) the data in such a way that if the data were intercepted, a third party would not be able to unscramble (decrypt) it'
+    * However, the intended recipient would be able to decrypt the transmission
+
+## Layer 7: The Application Layer
+* The application layer gives application services to a network
+* An important (and often-misunderstood) concept is that end-user applications (such as Microsoft Word) live at the application layer
+* Instead, the application layer supports services used by end-user applications
+* For example, email is an application layer service that does exist at the application layer, whereas Microsoft Outlook (an example of an email client) is an end-user application that does not live at the application layer
+* Another function of the application layer is advertising available services
+* The following list describes the functions of the application layer in more detail: 
+  * **Application services**:
+    * Examples of the application services living at the application layer include file sharing and email
+  * **Service advertisement**:
+    * Some applications’ services (for example, some networked printers) periodically send out advertisements, making their availability known to other devices on the network
+    * Other services, however, register themselves and their services with a centralized directory (for example, Microsoft Active Directory), which can be queried by other network devices seeking such services
+
 
 
 
