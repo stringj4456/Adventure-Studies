@@ -112,6 +112,37 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
         * This might be necessary because some networks support load balancing, where multiple links are used to send packets between two devices
         * Because multiple links exist, packets might arrive out of order
  
+ ## Layer 4: The Transport Layer
+ * The transport layer acts as a dividing line between the upper layers and lower layers of the OSI model
+ * Specifically, messages are taken from upper layers (Layers 5–7) and are encapsulated into segments for transmission to the lower layers (Layers 1–3)
+ * Similarly, data streams coming from lower layers are decapsulated and sent to Layer 5 (the session layer), or some other upper layer, depending on the protocol
+ * Two common transport layer protocols are TCP and UDP: 
+   * **Transmission Control Protocol (TCP)**:
+     * TCP is a connection-oriented transport protocol
+     * Connection-oriented transport protocols offer reliable transport, in that if a segment is dropped, the sender can detect the drop and retransmit the dropped segment
+     * Specifically, a receiver acknowledges segments that it receives
+     * Based on those acknowledgments, a sender can decide which segments were successfully received and which segments need to be transmitted again
+   * **User Datagram Protocol (UDP)**:
+     * UDP is a connectionless transport protocol
+     * Connectionless transport protocols offer unreliable transport, in that if a segment is dropped, the sender is unaware of the drop, and no retransmission occurs
+ * Two common flow control approaches at Layer 4 are windowing and buffering: 
+    * **Windowing**:
+      * TCP communication uses windowing, in that one or more segments are sent at one time, and a receiver can attest to the receipt of all the segments in a window with a single acknowledgment
+      * In some cases, as illustrated in Figure 1-11, TCP uses a sliding window, where the window size begins with one segment
+      * If there is a successful acknowledgment of that one segment (that is, the receiver sends an acknowledgment asking for the next segment), the window size doubles to two segments 
+      * Upon successful receipt of those two segments, the next window holds four segments
+      * This exponential increase in window size continues until the receiver does not acknowledge successful receipt of all segments within a certain amount of time—known as the round-trip time (RTT), which is sometimes called real transfer time—or until a configured maximum window size is reached
+
+      <img src="images/window.png" alt="state transition modulation" width="30%"/>
+
+    * **Buffering**:
+      * With buffering, a device (for example, a router) uses a chunk of memory (sometimes called a buffer or a queue) to store segments if bandwidth is not available to send those segments
+      * A queue has finite capacity, however, and can overflow (that is, drop segments) in the event of sustained network congestion
+
+
+
+
+
 
 
 
