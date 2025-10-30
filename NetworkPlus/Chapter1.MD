@@ -131,9 +131,9 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
       * In some cases, as illustrated in Figure 1-11, TCP uses a sliding window, where the window size begins with one segment
       * If there is a successful acknowledgment of that one segment (that is, the receiver sends an acknowledgment asking for the next segment), the window size doubles to two segments 
       * Upon successful receipt of those two segments, the next window holds four segments
-      * This exponential increase in window size continues until the receiver does not acknowledge successful receipt of all segments within a certain amount of time—known as the round-trip time (RTT), which is sometimes called real transfer time—or until a configured maximum window size is reached
+      * This exponential increase in window size continues until the receiver does not acknowledge successful receipt of all segments within a certain amount of time—known as the round-trip time (RTT), which is sometimes called real transfer time—or until a configured maximum window size is reached 
 
-      <img src="images/window.png" alt="state transition modulation" width="50%"/>
+      <img src="images/window.png" alt="state transition modulation" width="45%"/>
 
     * **Buffering**:
       * With buffering, a device (for example, a router) uses a chunk of memory (sometimes called a buffer or a queue) to store segments if bandwidth is not available to send those segments
