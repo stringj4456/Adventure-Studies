@@ -74,5 +74,44 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
   * **Synchronous**: With synchronous transmission, two network devices that want to communicate between themselves must agree on a clocking method to show the beginning and ending of data frames. One approach to providing this clocking is to use a separate communications channel over which a clock signal is sent. Another approach relies on specific bit combinations or control characters to indicate the beginning of a frame or a byte of data. Like asynchronous transmissions, synchronous transmissions can perform error detection. However, rather than using parity bits, synchronous communication runs a mathematical algorithm on the data to create a cyclic redundancy check (CRC). If the sender and the receiver calculate the same CRC value for the same chunk of data, the receiver can conclude that the data was not corrupted during transmission
   
 ## Layer 3: The Network Layer
+* The network layer is primarily concerned with forwarding data based on logical addresses
+* Although many network administrators think of routing and IP addressing when they hear about the network layer, this layer is actually responsible for a variety of tasks: 
+  
+  * **Logical addressing**:
+    * Whereas the data link layer uses physical addresses to make forwarding decisions, the network layer uses logical addressing to make forwarding decisions
+    * The most widely deployed routed protocol is Internet Protocol (IP)
+  * **Switching**:
+    * Engineers often associate the term switching with Layer 2 technologies; however, the concept of switching also exists at Layer 3
+    * Switching, at its essence, is making decisions about how data should be forwarded
+    * At Layer 3, three common switching techniques exist: 
+      * **Packet switching**:
+        * With packet switching, a data stream is divided into packets
+        * Each packet has a Layer 3 header that includes source and destination Layer 3 addresses 
+        * Another term for packet switching is routing
+      * **Circuit switching**: 
+        * Circuit switching dynamically brings up a dedicated communication link between two parties for those parties to communicate
+        * As a simple example of circuit switching, think of making a phone call from your home to a business. In fact, let’s go “old school” and pretend you have a traditional landline servicing your phone, the telephone company’s switching equipment interconnects your home phone with the phone system of the business you are calling. This interconnection (that is, circuit) exists only for the duration of the phone call 
+      * **Message switching**: 
+        * Unlike packet switching and circuit switching technologies, message switching is usually not well suited for real-time applications because of the delay involved
+        * Specifically, with message switching, a data stream is divided into messages
+        * Each message is tagged with a destination address, and the messages travel from one network device to another network device on the way to their destination
+        * Because these devices might briefly store the messages before forwarding them, a network using message switching is sometimes called a store-and-forward network
+        * Metaphorically, you could visualize message switching like routing an email message, where the email message might be briefly stored on an email server before being forwarded to the recipient
+  * **Route discovery and selection**:
+    * Because Layer 3 devices make forwarding decisions based on logical network addresses, a Layer 3 device might need to know how to reach various network addresses
+    * For example, a common Layer 3 device is a router. A router can maintain a routing table indicating how to forward a packet based on the packet’s destination network address
+    * A router can have its routing table populated via manual configuration (that is, by entering static routes), via a dynamic routing protocol (for example, OSPF or EIGRP), or simply by being directly connected to certain networks
+  * **Connection services**:
+    * Just as the data link layer offers connection services for flow control and error control, connection services also exist at the network layer
+    * Connection services at the network layer can improve the communication reliability if the data link’s LLC sublayer is not performing connection services
+    * The following functions are performed by connection services at the network layer: 
+      * **Flow control**: 
+        * Helps prevent a sender from sending data more rapidly than the receiver is capable of receiving
+      * **Packet reordering**: 
+        * Allows packets to be placed in the proper sequence as they are sent to the receiver
+        * This might be necessary because some networks support load balancing, where multiple links are used to send packets between two devices
+        * Because multiple links exist, packets might arrive out of order
+ 
+
 
 
