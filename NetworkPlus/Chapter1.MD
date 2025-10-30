@@ -139,6 +139,27 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
       * With buffering, a device (for example, a router) uses a chunk of memory (sometimes called a buffer or a queue) to store segments if bandwidth is not available to send those segments
       * A queue has finite capacity, however, and can overflow (that is, drop segments) in the event of sustained network congestion
 
+## Layer 5: The Session Layer
+* The session layer is responsible for setting up, maintaining, and tearing down sessions
+* You can think of a session as a conversation that needs to be treated separately from other sessions to avoid the intermingling of data from different conversations
+* Here is a detailed look at the functions of the session layer: 
+  * **Setting up a session**:
+    * Examples of the procedures involved in setting up a session include the following: 
+      * Checking user credentials (for example, username and password) 
+      * Assigning numbers to a session’s communication flows to uniquely find each one 
+      * Negotiating services needed during the session
+      * Negotiating which device begins sending data  
+  * **Maintaining a session**:
+    * Examples of the procedures involved in supporting a session include the following: 
+      * Transferring data
+      * Reestablishing a disconnected session 
+      * Acknowledging receipt of data 
+  * **Tearing down a session**:
+    * A session can be disconnected based on agreement of the devices in the session
+    * Alternatively, a session might be torn down because one party disconnects (either intentionally or because of an error condition)
+    * If one party disconnects, the other party can detect a loss of communication with that party and tear down its side of the session
+    * Session Initiation Protocol (SIP) is an example of a session layer protocol, which can help set up, support, and tear down a voice or video connection
+
 
 
 
