@@ -133,7 +133,7 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
       * Upon successful receipt of those two segments, the next window holds four segments
       * This exponential increase in window size continues until the receiver does not acknowledge successful receipt of all segments within a certain amount of time—known as the round-trip time (RTT), which is sometimes called real transfer time—or until a configured maximum window size is reached
 
-      <img src="images/window.png" alt="state transition modulation" width="30%"/>
+      <img src="images/window.png" alt="state transition modulation" width="50%"/>
 
     * **Buffering**:
       * With buffering, a device (for example, a router) uses a chunk of memory (sometimes called a buffer or a queue) to store segments if bandwidth is not available to send those segments
