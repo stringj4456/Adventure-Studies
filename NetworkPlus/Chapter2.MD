@@ -58,7 +58,7 @@
 * As shown in Figure 2-12, each port on a switch represents a separate collision domain
 * Also, all ports on a switch belong to the same broadcast domain, with one exception: when the ports on a switch have been divided into separate virtual LANs (VLANs)
 * Remember that each VLAN represents a separate broadcast domain, and for traffic to travel from one VLAN to another, that traffic must be routed by a Layer 3 device
-<img src="images/coll1.png" alt="Collision/Broadcast Domain" width="45%"/>
+<img src="images/coll1.png" alt="Collision/Broadcast Domain" width="40%"/>
 
 * Whereas a Layer 2 switch makes forwarding decisions based on MAC address information, a multilayer switch can make forwarding decisions based on upper-layer information
 * Some literature refers to a multilayer switch as a Layer 3 capable switch because of the switch’s capability to make forwarding decisions like a router
