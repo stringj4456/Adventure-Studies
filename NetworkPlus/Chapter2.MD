@@ -12,3 +12,72 @@
  
   <img src="images/router.png" alt="Routers" width="45%"/>
 
+# Switches
+* Layer 2 switches dynamically learn the MAC addresses attached to various ports by looking at the source MAC addresses on frames coming into a port
+* Initially, however, a switch is unaware of what MAC addresses reside off which ports (unless MAC addresses have been statically configured)
+* Therefore, when a switch receives a frame destined for a MAC address not yet present in the switch’s MAC address table, the switch floods that frame out all the switch ports except the port on which the frame was received
+* Similarly, broadcast frames (that is, frames with destination MAC address FFFF.FFFF.FFFF) are always flooded out of all switch ports except the port on which the frame was received
+* The reason broadcast frames are always flooded is that no endpoint will have MAC address FFFF.FFFF.FFFF, which means that the FFFF.FFFF.FFFF MAC address will never be learned in a switches MAC address table
+  
+<br>
+
+* If PC1 does not already have the server’s MAC address in its Address Resolution Protocol (ARP) cache, PC1 can send an ARP request in an attempt to learn the server’s MAC address, as shown in Figure 2-2
+  
+  <img src="images/arp1.png" alt="ARP" width="45%"/>
+* When switch SW1 sees PC1’s ARP request enter port Gigabit 0/1, PC1’s MAC address AAAA.AAAA.AAAA is added to switch SW1’s MAC address table
+* Also, because the ARP request is a broadcast, its destination MAC address is FFFF.FFFF.FFFF
+* Because the MAC address FFFF.FFFF.FFFF is not known to switch SW1’s MAC address table, switch SW1 floods a copy of the incoming frame out all switch ports other than the port on which the frame was received, as shown in Figure 2-3
+
+  <img src="images/arp2.png" alt="ARP" width="45%"/>
+* When switch SW2 receives the ARP request over its Gig 0/1 trunk port, the source MAC address AAAA.AAAA.AAAA is added to switch SW2’s MAC address table, as illustrated in Figure 2-4
+* Also, using behavior similar to that of switch SW1, switch SW2 floods the broadcast
+
+  <img src="images/arp3.png" alt="ARP" width="45%"/>
+* The server receives the ARP request and responds with an ARP reply, as shown in Figure 2-5
+* Unlike the ARP request, however, the ARP reply frame is not a broadcast frame. The ARP reply, in this example, has a destination MAC address AAAA.AAAA.AAAA, which makes the ARP reply a unicast frame
+
+  <img src="images/arp4.png" alt="ARP" width="45%"/>
+* Upon receiving the ARP reply from the server, switch SW2 adds the server’s MAC address BBBB.BBBB.BBBB to its MAC address table, as shown in Figure 2-6
+* Also, the ARP reply is only sent out port Gig 0/1 because switch SW1 knows that the destination MAC address AAAA.AAAA.AAAA is available off port Gig 0/1
+
+  <img src="images/arp5.png" alt="ARP" width="45%"/>
+* When receiving the ARP reply in its Gig 0/2 port, switch SW1 adds the server’s MAC address BBBB.BBBB.BBBB to its MAC address table
+* Also, like switch SW2, switch SW1 now has an entry in its MAC address table for the frame’s destination MAC address AAAA.AAAA.AAAA
+* Therefore, switch SW1 forwards the ARP reply out port Gig 0/1 to the endpoint of PC1, as illustrated in Figure 2-7
+
+  <img src="images/arp6.png" alt="ARP" width="45%"/>
+* After receiving the server’s ARP reply, PC1 knows the MAC address of the server
+* Therefore, PC1 can now properly construct an SSH segment destined for the server
+* Because PC1 learned the server’s MAC address as a result of its earlier ARP request and stored that result in its local ARP cache, the transmission of subsequent Telnet segments does not require additional ARP requests
+* However, if unused for a period of time, entries in a PC’s ARP cache can time out
+* Therefore, the PC would have to broadcast another ARP frame if it needed to send traffic to the same destination IP address
+* The sending of the additional ARP frames adds a small amount of delay when reestablishing a session with that destination IP address
+
+<br>
+
+* As shown in Figure 2-12, each port on a switch represents a separate collision domain
+* Also, all ports on a switch belong to the same broadcast domain, with one exception: when the ports on a switch have been divided into separate virtual LANs (VLANs)
+* Remember that each VLAN represents a separate broadcast domain, and for traffic to travel from one VLAN to another, that traffic must be routed by a Layer 3 device
+<img src="images/coll1.png" alt="Collision/Broadcast Domain" width="45%"/>
+
+* Whereas a Layer 2 switch makes forwarding decisions based on MAC address information, a multilayer switch can make forwarding decisions based on upper-layer information
+* Some literature refers to a multilayer switch as a Layer 3 capable switch because of the switch’s capability to make forwarding decisions like a router
+* The term multilayer switch is more accurate, however, because many multilayer switches have policy-based routing features that allow upper-layer information (for example, application port numbers) to be used in making forwarding decisions
+<img src="images/coll2.png" alt="Collision/Broadcast Domain" width="45%"/>
+
+* As on a Layer 2 switch, each port on a multilayer switch represents a separate collision domain; however, a characteristic of a multilayer switch (and a router) is that it can become a boundary of a broadcast domain
+* Although all ports on a Layer 2 switch belong to the same broadcast domain, if configured as such, all ports on a multilayer switch can belong to different broadcast domains
+
+
+
+
+
+
+
+
+
+
+
+
+
+
