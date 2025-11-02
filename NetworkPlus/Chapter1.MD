@@ -133,7 +133,7 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
       * Upon successful receipt of those two segments, the next window holds four segments
       * This exponential increase in window size continues until the receiver does not acknowledge successful receipt of all segments within a certain amount of time—known as the round-trip time (RTT), which is sometimes called real transfer time—or until a configured maximum window size is reached 
 
-      <img src="images/window.png" alt="state transition modulation" width="45%"/>
+      <img src="images/window.png" alt="TCP Window" width="45%"/>
 
     * **Buffering**:
       * With buffering, a device (for example, a router) uses a chunk of memory (sometimes called a buffer or a queue) to store segments if bandwidth is not available to send those segments
@@ -184,6 +184,50 @@ Characteristics of the Logical Link Control (LLC) sublayer of the data link laye
   * **Service advertisement**:
     * Some applications’ services (for example, some networked printers) periodically send out advertisements, making their availability known to other devices on the network
     * Other services, however, register themselves and their services with a centralized directory (for example, Microsoft Active Directory), which can be queried by other network devices seeking such services
+
+
+# TCP/IP Stack
+* The TCP/IP stack has only four defined layers, as opposed to the seven layers of the OSI model:
+
+<img src="images/tcpip.png" alt="TCP/IP Stack" width="45%"/>
+
+* The TCP/IP stack is composed of the following layers:
+  * **Network interface**: The TCP/IP stack’s network interface layer encompasses the technologies offered by Layers 1 and 2 (the physical and data link layers) of the OSI model
+  * **Internet**: The Internet layer of the TCP/IP stack maps to Layer 3 (the network layer) of the OSI model. Although multiple routed protocols live at the OSI model’s network layer, the Internet layer of the TCP/IP stack focuses on IP as the protocol to be routed through a network
+  * **Transport**: The transport layer of the TCP/IP stack maps to Layer 4 (the transport layer) of the OSI model. The two primary protocols found at the TCP/IP stack’s transport layer are TCP and UDP 
+  * **Application**: The biggest difference between the TCP/IP stack and the OSI model is at the TCP/IP stack’s application layer. This layer addresses concepts described by Layers 5, 6, and 7 (the session, presentation, and application layers) of the OSI model
+  
+* Figure 1-16 shows the format of an IP version 4 (IPv4) packet:
+  
+  <img src="images/ipv4h.png" alt="IPv4 Packet" width="45%"/>
+ 
+    * The Time-to-Live (TTL) field is decremented by 1 every time this packet is routed from one IP network to another (that is, when it passes through a router)
+    * If the TTL value ever reaches 0, the packet is discarded from the network. This behavior helps prevent routing loops
+   * As a common practice, the OSI layer numbers 1, 2, and 3 are still used when referring to physical, data link, and network layers of the TCP/IP stack, even though the TCP/IP stack does not explicitly separate the physical and data link layers
+
+* Figure 1-17 details the structure of a TCP segment:
+
+  <img src="images/tcph.png" alt="TCP Packet" width="45%"/>
+  
+  * Notice the field for window size. The value in this field determines how many bytes a device can receive before expecting an acknowledgment. This feature offers flow control
+  * The header of a TCP segment also contains sequence numbers for segments
+  * With sequence numbering, if segments arrive out of order, the recipient can put them back in the proper order based on the sequence numbers
+  * The acknowledgment number in the header shows the next sequence number the receiver expects to receive
+  * This is a way for the receiver to let the sender know that all segments up to and including that point have been received
+  * Due to the sequencing and acknowledgments, TCP is considered to be a connection-oriented transport layer protocol
+  
+* Figure 1-18 presents the structure of a UDP segment:
+ 
+  <img src="images/udph.png" alt="UDP Packet" width="45%"/>
+
+  * UDP lacks the sequence numbering, window size, and acknowledgment numbering present in the header of a TCP segment
+  * The UDP segment’s header simply contains source and destination port numbers, a UDP checksum (which is an optional field used to detect transmission errors), and the segment length (measured in bytes)
+
+
+
+
+
+
 
 
 
