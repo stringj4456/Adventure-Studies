@@ -68,6 +68,42 @@
 * As on a Layer 2 switch, each port on a multilayer switch represents a separate collision domain; however, a characteristic of a multilayer switch (and a router) is that it can become a boundary of a broadcast domain
 * Although all ports on a Layer 2 switch belong to the same broadcast domain, if configured as such, all ports on a multilayer switch can belong to different broadcast domains
 
+# IDS vs IPS
+* Because the analyzed traffic does not flow through the IDS device, the IDS device is considered to be **passive**, and the IPS device is considered to be **active**
+* Although an IDS device can also communicate with a security appliance or a router to prevent subsequent attack packets, the initially offending traffic reaches its destination
+* Conversely, an IPS device can drop the traffic inline, thus preventing even the first malicious packet from reaching its intended target
+<img src="images/idsips.png" alt="Collision/Broadcast Domain" width="45%"/>
+
+# IDS/IPS Device Categories
+* IDS and IPS devices can be categorized based on how they detect malicious traffic
+* Consider the following approaches to detecting malicious traffic:
+  * Signature-based detection
+  * Policy-based detection
+  * Anomaly-based detection
+  
+* **Signature Based Detection**
+  * The primary method used to detect and prevent attacks using IDS or IPS technologies is signature based
+  * A signature could be a string of bytes that, in a certain context, triggers detection
+  * For example, attacks against a web server typically take the form of URLs. Therefore, URLs could be searched for a certain string that would identify an attack against a web server
+  * As another example, the IDS or IPS device could search for a pattern in the MIME header of an email message
+* **Policy Based Detection**
+  * With a policy-based approach, the IDS/IPS device needs a specific declaration of the security policy
+  * For example, you could write a network access policy that identifies which networks can communicate with other networks. The IDS/IPS device could then recognize out-of-profile traffic that does not conform to the policy and report that activity
+  * Policy-based detection could also identify unencrypted channels and plaintext credentials and insecure protocols such as Telnet, SNMPv1, SNMPv2, HTTP, FTP, SLIP, and TFTP
+	
+* **Anomaly Based Detection**
+  * This approach is prone to false positives because a normal condition is difficult to measurably define
+  * However, there are a couple of options for detecting anomalies:
+    * **Statistical anomaly detection**: 
+      * This approach involves watching network traffic patterns over a period of time and dynamically building a baseline
+      * Then, if traffic patterns significantly vary from the baseline, an alarm can be triggered
+    * **Nonstatistical anomaly detection**:
+      * This approach allows an administrator to define what traffic patterns are supposed to look like
+      * However, imagine that Microsoft releases a large update for its Windows 10 OS, and your company has hundreds of computers that are configured to automatically download that service pack. If multiple employees turn on their computers at approximately the same time tomorrow morning, and multiple copies of the service pack simultaneously start to download, the IDS/IPS device might consider that traffic pattern to be significantly outside the baseline
+      * As a result, the nonstatistical anomaly detection approach could lead to a false positive
+      * However, an anomaly-based IPS may be able to indicate abnormal behavior, compared to the baseline of normal activity, which could assist you in discovering a new type of attack that is being used against your network
+
+
 
 
 
