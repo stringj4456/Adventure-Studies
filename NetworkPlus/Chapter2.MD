@@ -72,7 +72,7 @@
 * Because the analyzed traffic does not flow through the IDS device, the IDS device is considered to be **passive**, and the IPS device is considered to be **active**
 * Although an IDS device can also communicate with a security appliance or a router to prevent subsequent attack packets, the initially offending traffic reaches its destination
 * Conversely, an IPS device can drop the traffic inline, thus preventing even the first malicious packet from reaching its intended target
-<img src="images/idsips.png" alt="Collision/Broadcast Domain" width="45%"/>
+<img src="images/idsips.png" alt="IDS/IPS" width="45%"/>
 
 # IDS/IPS Device Categories
 * IDS and IPS devices can be categorized based on how they detect malicious traffic
@@ -102,6 +102,30 @@
       * However, imagine that Microsoft releases a large update for its Windows 10 OS, and your company has hundreds of computers that are configured to automatically download that service pack. If multiple employees turn on their computers at approximately the same time tomorrow morning, and multiple copies of the service pack simultaneously start to download, the IDS/IPS device might consider that traffic pattern to be significantly outside the baseline
       * As a result, the nonstatistical anomaly detection approach could lead to a false positive
       * However, an anomaly-based IPS may be able to indicate abnormal behavior, compared to the baseline of normal activity, which could assist you in discovering a new type of attack that is being used against your network
+
+# Load Balancer
+* A load balancer is a network device or software component that distributes incoming network traffic across multiple servers, systems, or resources in a network, ensuring optimal utilization of resources, high availability, and improved performance
+* Load balancers operate at the application layer (Layer 7) or transport layer (Layer 4) of the OSI model and use various algorithms, such as round-robin, least connections, or weighted distribution, to evenly distribute incoming requests or connections among the backend servers
+* The load balancer can also check the health of the nodes periodically and intelligently prevent the forwarding of web requests to servers that are sickly
+
+# Proxy Servers
+* Some clients are configured to forward their packets, which are seemingly destined for the Internet, to a proxy server
+* The proxy server receives the client’s request, and on behalf of that client (that is, as that client’s proxy), the proxy server sends the request out to the Internet
+* When a reply is received from the Internet, the proxy server forwards the response on to the client
+<img src="images/proxy.png" alt="Proxy Server" width="45%"/>
+
+* Because all requests going out to the Internet are sourced from the proxy server, the IP addresses of network devices inside the trusted network are hidden from the Internet
+* Many proxy servers perform content caching and thus can save bandwidth:
+  * For example, without a proxy server, if multiple clients all visited the same website, the same graphics from the home page of the website would be downloaded multiple times (one time for each client visiting the website)
+  * However, with a proxy server performing content caching, when the first client navigates to a website on the Internet, and the Internet-based web server returns its content, the proxy server not only forwards this content to the client requesting the web page but also stores a copy of the content on its hard drive
+  * Then, when a subsequent client points its web browser to the same website, after the proxy server determines that the page has not changed, the proxy server can locally serve up the content to the client, without having to once again consume Internet bandwidth to download all the graphic elements from the Internet-based website 
+* Some proxy servers can perform content filtering to restrict clients from accessing certain URLs
+* A reverse proxy receives requests on behalf of a server or servers and replies back to the clients on behalf of those servers
+* Reverse proxies can also be used with load-balancing and caching to better utilize a group of servers providing scalability and high availability
+
+
+
+
 
 
 
