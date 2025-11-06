@@ -123,6 +123,25 @@
 * A reverse proxy receives requests on behalf of a server or servers and replies back to the clients on behalf of those servers
 * Reverse proxies can also be used with load-balancing and caching to better utilize a group of servers providing scalability and high availability
 
+# Network Attached Storage (NAS)
+* A NAS device is a specialized type of storage device that is designed to provide centralized storage and file sharing capabilities to multiple users and devices within a network
+* Unlike traditional storage solutions that are directly attached to individual computers, NAS devices connect to a local area network or wide area network, allowing them to be accessed by any device connected to the network
+* NAS devices typically consist of one or more hard drives configured in a Redundant Array of Independent Disks (RAID) array for data redundancy and increased reliability
+
+# Storage Area Networks (SAN)
+* A storage area network (SAN) is a high-speed, very specialized network that is designed to store massive amounts of data and make that data available quickly when clients and/or servers request it
+* Originally, Fibre Channel was the technology that ruled the SAN space
+* Unlike Ethernet, Fibre Channel is designed for very low-latency, guaranteed lossless connectivity
+* In contrast, with UDP in an Ethernet environment, it is easy to contend with packet loss and delays. This is not the case in a SAN environment
+* To make SANs even more accessible and flexible, they began to be created to support Internet Small Computer System Interface (iSCSI)
+* With iSCSI, which is an IP-based technology for network storage, a client using the storage is referred to as an initiator, and the system providing the iSCSI storage is called the iSCSI target
+* Networks supporting iSCSI are often configured to support larger-than-normal frame sizes, referred to as jumbo frames
+* Converging different forms of traffic on a network extended to SAN and LAN traffic is thanks to a remarkable invention: Fibre Channel over Ethernet (FCoE)
+* Just like it sounds, this technology allows Ethernet to encapsulate Fibre Channel frames and carry them over a high-speed Ethernet infrastructure
+* Modifications were made to the Ethernet standards for FCoE to provide the level of service required in the SAN for Fibre Channel
+* Ethernet needs to be truly high speed in order to have a chance at providing FCoE services. In the Cisco implementation, 10-Gbps Ethernet is required for FCoE
+
+
 
 
 
