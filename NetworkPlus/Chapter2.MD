@@ -141,6 +141,40 @@
 * Modifications were made to the Ethernet standards for FCoE to provide the level of service required in the SAN for Fibre Channel
 * Ethernet needs to be truly high speed in order to have a chance at providing FCoE services. In the Cisco implementation, 10-Gbps Ethernet is required for FCoE
 
+# Controllers
+* Access points tend to come in two major types: autonomous and lightweight 
+* Lightweight access points do not have the control plane intelligence built in to perform their functions for the network
+* These devices are controlled by controllers, or more formally known as wireless LAN controllers (WLCs)
+* WLCs are specialized network devices that permit the central control and management of large numbers of lightweight access points
+* WLCs simplify the administration of your access points, and they can also assist you dramatically in the monitoring and ongoing maintenance of the wireless infrastructure
+
+# Content Delivery Network (CDN)
+* A content delivery network (CDN) is a sophisticated infrastructure composed of multiple servers distributed across various geographic locations, strategically positioned to deliver web content and digital media to users with optimal speed and reliability
+* For example, when a user requests access to content hosted on a web server, the CDN automatically identifies the user’s location and routes the request to the nearest server within its network
+* By serving content from servers near the user, CDNs can significantly reduce latency and minimize the time it takes for content to reach the end-user device, enhancing the overall user experience
+* CDNs can also help mitigate the risk of server overload and improve scalability by distributing the load of content delivery across multiple servers
+* This distributed architecture enables CDNs to handle high volumes of traffic efficiently, particularly during peak usage periods or sudden spikes in demand 
+* CDNs can also offer advanced caching mechanisms that store copies of frequently accessed content on edge servers, further optimizing performance and reducing the strain on the servers of origin
+
+# Quality of Service
+* While the main concern of your network is to ensure that data packets reach their rightful destinations, it is the job of quality of service (QoS) to ensure that packets do not suffer from long delays (latency) or, worse, dropped packets
+* Through the use of QoS technologies, you can identify which traffic types need to be sent first, how much bandwidth to allocate to various traffic types, which traffic types should be dropped first in the event of congestion, and how to make the most efficient use of the relatively limited bandwidth of an IP WAN
+* Three categories of quality issues:
+  * **Delay**:
+    * Delay is the time required for a packet to travel from source to destination
+    * You might have witnessed delay on the evening news when the news anchor is talking via satellite to a foreign news correspondent
+    * Because of the satellite delay, the conversation begins to feel unnatural
+  * **Jitter**:
+    * Jitter is the uneven arrival of packets
+    * For example, imagine a VoIP conversation where packet 1 arrives at a destination router. Then, 20 ms later, packet 2 arrives. After another 70 ms, packet 3 arrives, and then packet 4 arrives 20 ms behind packet 3
+    * This variation in arrival times (that is, variable delay) is not due to dropped packets, but the jitter might be interpreted by the listener as dropped packets
+  * **Drops**:
+    * Packet drops occur when a link is congested and a router’s interface queue overflows
+    * Some types of traffic, such as UDP traffic carrying voice packets, are not retransmitted if packets are dropped
+* As a packet travels from source to destination, its effective bandwidth is the bandwidth of the slowest link along that path
+
+
+
 
 
 
