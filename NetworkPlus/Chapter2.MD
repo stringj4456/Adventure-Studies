@@ -173,6 +173,12 @@
     * Some types of traffic, such as UDP traffic carrying voice packets, are not retransmitted if packets are dropped
 * As a packet travels from source to destination, its effective bandwidth is the bandwidth of the slowest link along that path
 
+# Time to Live (TTL)
+* TTL is a field in the header of IP packets that indicates the maximum number of hops, or network devices, that a packet can pass through before being discarded
+* As a packet travels through a network, each router it encounters decrements the TTL value by one
+* If the TTL reaches zero before the packet reaches its destination, the router discards the packet and sends an Internet Control Message Protocol (ICMP) message back to the sender, notifying them of the packet’s expiration
+
+
 
 
 
