@@ -1,4 +1,4 @@
-# Chapter 1: Introduction to TCP/IP Networking
+# Chapter 2: Fundamentals of Ethernet LANs
 
 **Same-layer interaction**: The two computers use a protocol to communicate with the same layer on another computer. The protocol defines a header that communicates what each computer wants to do
 
