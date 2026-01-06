@@ -46,7 +46,39 @@
 - The crossover cable pinout crosses the pair at the transmit pins on each device to the receive pins on the opposite device
 - Figure 2-11 shows this:
 
-<img src="images/ch1/crossover.png" alt="" width="50%"/>  
+<img src="images/ch1/crossover.png" alt="" width="52%"/>
+
+## Choosing the Right Cable Pinouts
+- The key is to know whether a device acts like a PC NIC, transmitting at pins 1 and 2, or like a switch, transmitting at pins 3 and 6. Then, just apply the following logic: 
+  - Crossover cable: If the endpoints transmit on the same pin pair 
+  - Straight-through cable: If the endpoints transmit on different pin pairs
+- Table 2-3 lists the devices and the pin pairs they use, assuming that they use 10BASE-T and 100BASE-T
+
+<img src="images/ch1/table.png" alt="" width="50%"/>
+
+- Figure 2-12 shows a campus LAN in a single building. In this case, several straight-through cables are used to connect PCs to switches. In addition, the cables connecting the switches require crossover cables:
+
+<img src="images/ch1/campus.png" alt="" width="50%"/>
+
+## Automatic Rewiring with Auto-MDIX
+- If the link needs a crossover cable, but the installer connected a straight-through cable, this feature can sense the incorrect pinout, and then redirect the electrical signals to the correct pairs to compensate so that the link works
+- The Ethernet standard calls this feature automatic medium-dependent interface crossover (auto-MDIX)
+- Auto-MDIX allows sites to use straight-through pinouts on all cables
+- On the links that need a crossover pinout, the auto-MDIX on the switch port will sense the use of the straight-through pinout and then internally swap the pairs used by the transceiver to make the link work
+
+## UTP Cabling Pinouts for 1000BASE-T
+- 1000BASE-T requires four wire pairs and it also uses more advanced electronics that allow both ends to transmit and receive simultaneously on each wire pair
+- The wiring pinouts for 1000BASE-T work almost identically to the earlier standards, adding details for the additional two pairs
+- The straight-through cable for 1000BASE-T uses the four wire pairs to create four circuits, but the pins need to match
+- It uses the same pinouts for two pairs as do the 10BASE-T and 100BASE-T standards, and it adds a pair at pins 4 and 5 and another pair at pins 7 and 8, as shown in Figure 2-13
+
+<img src="images/ch1/1000base.png" alt="" width="50%"/>
+
+- 1000BASE-T (Gigabit Ethernet) uses straight-through cable pinout for some links but crossover cables in other cases
+- The Gigabit Ethernet crossover cable crosses pairs A and B in the figure (the pairs at pins 1,2 and 3,6) and also pairs C and D (the pair at pins 4,5 with the pair at pins 7,8)
+
+
+
 
 
 
