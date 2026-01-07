@@ -159,6 +159,24 @@
 - **Half duplex**: The device must wait to send if it is currently receiving a frame; in other words, it cannot send and receive at the same time
 - **Full duplex**: The device does not have to wait before sending; it can send and receive at the same time
 
+## Using Half Duplex with LAN Hubs
+- LAN hubs forward data using physical layer standards rather than data-link standards and are therefore considered to be Layer 1 devices
+- When an electrical signal comes in one hub port, the hub repeats that electrical signal out all other ports (except the incoming port)
+- The downside of using LAN hubs is that if two or more devices transmitted a signal at the same instant, the electrical signals collide and become garbled
+- To prevent these collisions, the Ethernet nodes must use half-duplex logic instead of full-duplex logic
+- Half-duplex logic tells the nodes that if someone else is sending, wait before sending
+- Nodes that use half-duplex logic actually use a relatively well-known algorithm called carrier sense multiple access with collision detection (CSMA/CD)
+- The algorithm takes care of the obvious cases but also the cases caused by unfortunate timing
+- How CSMA/CD works:
+  1. A device with a frame to send listens until the Ethernet is not busy
+  2. When the Ethernet is not busy, the sender begins sending the frame
+  3. The sender listens while sending to discover whether a collision occurs; collisions might be caused by many reasons, including unfortunate timing. If a collision occurs, all currently sending nodes do the following:
+     - They send a jamming signal that tells all nodes that a collision happened
+     - They independently choose a random time to wait before trying again, to avoid unfortunate timing
+     - The next attempt starts again at Step 1
+- For all links between PCs and switches, or between switches, use full duplex
+- However, for any link connected to a LAN hub, the connected LAN switch and NIC port should use half duplex
+
 
 
 
