@@ -102,6 +102,18 @@
 - To transmit between two devices, you need two cables, one for each direction
 - Note that the transmit port on one device connects to a cable that connects to a receive port on the other device, and vice versa with the other cable
 
+## Using Fiber with Ethernet
+- To use fiber with Ethernet switches, you need to use a switch with either built-in ports that support a particular optical Ethernet standard, or a switch with modular ports that allow you to change the Ethernet standard used on the port
+
+<img src="images/ch1/fiberstandards.png" alt="" width="50%"/>
+
+- Although distance might be the first criterion to consider when thinking about whether to use UTP or fiber cabling, a few other tradeoffs exist as well
+- UTP wins again on cost, because the cost goes up as you move from UTP, to multimode, and then to single-mode, due to the extra cost for the transmitters like the SFP and SFP+ modules
+- UTP has some negatives, however. First, UTP might work poorly in some electrically noisy environments such as factories, because UTP can be affected by electromagnetic interference (EMI)
+- Also, UTP cables emit a faint signal outside the cable, so highly secure networks may choose to use fiber, which does not create similar emissions, to make the network more secure
+
+<img src="images/ch1/cablecompare.png" alt="" width="50%"/>
+
 
 
 
