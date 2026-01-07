@@ -86,7 +86,7 @@
 <img src="images/ch1/fiber.png" alt="" width="50%"/>
 
 - The three outer layers of the cable protect the interior of the cable and make the cables easier to install and manage, while the inner cladding and core work together to create the environment to allow transmission of light over the cable
-- A light source, called the optical transmitter, shines a light into the core
+- A light source, called the **optical transmitter**, shines a light into the core
 - Light can pass through the core; however, light reflects off the cladding back into the core
 - Figure 2-15 shows an example with a light-emitting diode (LED) transmitter. You can see how the cladding reflects the light back into the core as it travels through the core: 
 
@@ -113,6 +113,35 @@
 - Also, UTP cables emit a faint signal outside the cable, so highly secure networks may choose to use fiber, which does not create similar emissions, to make the network more secure
 
 <img src="images/ch1/cablecompare.png" alt="" width="50%"/>
+
+## Ethernet Data Link Protocols
+- The Ethernet data-link protocol defines the Ethernet frame: an Ethernet header at the front, the encapsulated data in the middle, and an Ethernet trailer at the end
+- Ethernet actually defines a few alternate formats for the header, with the frame format shown in Figure 2-18 being commonly used today:
+
+<img src="images/ch1/ethheader.png" alt="" width="50%"/>
+
+- Table 2-6 lists the fields in the header and trailer and a brief description for reference:
+
+<img src="images/ch1/fields.png" alt="" width="50%"/>
+
+## Ethernet Addressing
+- Ethernet addresses, also called Media Access Control (MAC) addresses, are 6-byte long (48-bit-long) binary numbers
+- Most MAC addresses represent a single NIC or other Ethernet port, so these addresses are often called a unicast Ethernet address
+- Before a manufacturer can build Ethernet products, it must ask the IEEE to assign the manufacturer a universally unique 3-byte code, called the **organizationally unique identifier (OUI)**
+- The manufacturer agrees to give all NICs (and other Ethernet products) a MAC address that begins with its assigned 3-byte OUI
+- The manufacturer also assigns a unique value for the last 3 bytes, a number that manufacturer has never used with that OUI
+
+<img src="images/ch1/mac.png" alt="" width="50%"/>
+
+- In addition to unicast addresses, Ethernet also uses group addresses
+- The IEEE defines two general categories of group addresses for Ethernet:
+  - **Broadcast address**: Frames sent to this address should be delivered to all devices on the Ethernet LAN. It has a value of FFFF.FFFF.FFFF
+  - **Multicast addresses**: Frames sent to a multicast Ethernet address will be copied and forwarded to a subset of the devices on the LAN that volunteers to receive frames sent to a specific multicast address
+
+
+
+
+
 
 
 
