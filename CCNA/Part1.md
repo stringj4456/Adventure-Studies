@@ -138,6 +138,28 @@
   - **Broadcast address**: Frames sent to this address should be delivered to all devices on the Ethernet LAN. It has a value of FFFF.FFFF.FFFF
   - **Multicast addresses**: Frames sent to a multicast Ethernet address will be copied and forwarded to a subset of the devices on the LAN that volunteers to receive frames sent to a specific multicast address
 
+## Identifying Network Layer Protocols with the Ethernet Type Field 
+- The Ethernet Type field, or EtherType, sits in the Ethernet data-link layer header, but its purpose is to directly help the network processing on routers and hosts
+- Basically, the Type field identifies the type of network layer (Layer 3) packet that sits inside the Ethernet frame
+- The original host has a place to insert a value (a hexadecimal number) to identify the type of packet encapsulated inside the Ethernet frame
+- IEEE manages a list of EtherType values, so that every network layer protocol that needs a unique EtherType value can have a number
+- The sender just has to know the list (Anyone can view the list; just go to www.ieee.org and search for EtherType)
+- For example, a host can send one Ethernet frame with an IPv4 packet and the next Ethernet frame with an IPv6 packet. Each frame would have a different Ethernet Type field value, using the values reserved by the IEEE, as shown in Figure 2-20:
+
+<img src="images/ch1/ethertype.png" alt="" width="50%"/>
+
+## Error Detection with FCS
+- The Ethernet Frame Check Sequence (FCS) field in the Ethernet trailer—the only field in the Ethernet trailer—gives the receiving node a way to compare results with the sender, to discover whether errors occurred in the frame
+- The sender applies a complex math formula to the frame before sending it, storing the result of the formula in the FCS field
+- The receiver applies the same math formula to the received frame
+- The receiver then compares its own results with the sender’s results. If the results are the same, the frame did not change; otherwise, an error occurred and the receiver discards the frame
+- Ethernet defines that the errored frame should be discarded, but Ethernet does not attempt to recover the lost frame
+
+## Sending in Modern Ethernet LANs Using Full Duplex
+- **Half duplex**: The device must wait to send if it is currently receiving a frame; in other words, it cannot send and receive at the same time
+- **Full duplex**: The device does not have to wait before sending; it can send and receive at the same time
+
+
 
 
 
