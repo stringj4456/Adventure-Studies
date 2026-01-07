@@ -77,6 +77,30 @@
 - 1000BASE-T (Gigabit Ethernet) uses straight-through cable pinout for some links but crossover cables in other cases
 - The Gigabit Ethernet crossover cable crosses pairs A and B in the figure (the pairs at pins 1,2 and 3,6) and also pairs C and D (the pair at pins 4,5 with the pair at pins 7,8)
 
+## Fiber Cabling Transmission Concepts
+- Fiber-optic cabling uses glass as the medium through which light passes, varying that light over time to encode 0s and 1s
+- Fiber-optic cables use fiberglass, which allows a manufacturer to spin a long thin string (fiber) of flexible glass
+- A fiber-optic cable holds the fiber in the middle of the cable, allowing the light to pass through the glass
+- Figure 2-14 shows a cutout with the components of a fiber cable for perspective
+
+<img src="images/ch1/fiber.png" alt="" width="50%"/>
+
+- The three outer layers of the cable protect the interior of the cable and make the cables easier to install and manage, while the inner cladding and core work together to create the environment to allow transmission of light over the cable
+- A light source, called the optical transmitter, shines a light into the core
+- Light can pass through the core; however, light reflects off the cladding back into the core
+- Figure 2-15 shows an example with a light-emitting diode (LED) transmitter. You can see how the cladding reflects the light back into the core as it travels through the core: 
+
+<img src="images/ch1/mmf.png" alt="" width="50%"/>
+
+- The figure shows the normal operation of a **multimode fiber**, characterized by the fact that the cable allows for multiple angles (modes) of light waves entering the core
+- In contrast, **single-mode fiber** uses a smaller-diameter core, around one-fifth the diameter of common multimode cables
+- To transmit light into a much smaller core, a laser-based transmitter sends light at a single angle (hence the name single-mode)
+
+<img src="images/ch1/smf.png" alt="" width="50%"/>
+
+- Multimode improves the maximum distances over UTP, and it uses less expensive transmitters as compared with single-mode
+- To transmit between two devices, you need two cables, one for each direction
+- Note that the transmit port on one device connects to a cable that connects to a receive port on the other device, and vice versa with the other cable
 
 
 
