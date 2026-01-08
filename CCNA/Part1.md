@@ -277,6 +277,23 @@
   2. Router R1 de-encapsulates (removes) the IP packet from the Ethernet frame and encapsulates (inserts) the packet into a new Ethernet frame, with a new Ethernet header and trailer. The destination MAC address is R2’s G0/0 MAC address, and the source MAC address is R1’s G0/1 MAC address. R1 forwards this frame over the Ethernet WAN service to R2 next
   3. Router R2 de-encapsulates (removes) the IP packet from the Ethernet frame, encapsulates (inserts) the packet into an Ethernet frame that has the destination MAC address of PC2, and forwards the Ethernet frame to PC2
 
+## How Network Layer Routing Uses LANs and WANs 
+- The following list summarizes the major steps in a router’s internal network layer routing for each packet beginning with the frame arriving in a router interface: 
+  1. Use the data-link Frame Check Sequence (FCS) field to ensure that the frame had no errors; if errors occurred, discard the frame
+  2. Assuming that the frame was not discarded at Step 1, discard the old datalink header and trailer, leaving the IP packet
+  3. Compare the IP packet’s destination IP address to the routing table, and find the route that best matches the destination address. This route identifies the outgoing interface of the router and possibly the next-hop router IP address
+  4. Encapsulate the IP packet inside a new data-link header and trailer, appropriate for the outgoing interface, and forward the frame
+- Figure 3-11 works through an example of a packet sent by PC1 to PC2, followed by a detailed analysis of each device’s routing logic:
+
+<img src="images/ch1/routing.png" alt="" width="50%"/>
+
+## The IP Header
+<img src="images/ch1/ipheader.png" alt="" width="50%"/>
+
+
+
+
+
 
 
 
