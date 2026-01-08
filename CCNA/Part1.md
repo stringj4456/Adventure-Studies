@@ -177,6 +177,55 @@
 - For all links between PCs and switches, or between switches, use full duplex
 - However, for any link connected to a LAN hub, the connected LAN switch and NIC port should use half duplex
 
+# Leased Line WANS
+- To connect LANs using a WAN, the internetwork uses a router connected to each LAN, with a WAN link between the routers
+- For the WAN link, the enterprise’s network engineer must do some planning and then order some kind of WAN link from a WAN service provider
+- That provider installs the WAN link between the two routers, as shown in Figure 3-1:
+
+<img src="images/ch1/leasedline.png" alt="" width="50%"/>
+
+- The leased line service, a physical layer service, delivers bits in both directions, at a predetermined speed, using full-duplex logic
+- The leased line uses two pairs of wires, one pair for each direction of sending data, which allows full-duplex operation
+
+<img src="images/ch1/leasedline2.png" alt="" width="50%"/>
+
+- To create a leased line, some physical path must exist between the two routers on the ends of the link
+- The physical cabling must leave the customer buildings where each router sits; however, the telco does not simply install one cable between the two buildings
+- Instead, it uses what is typically a large and complex network that creates the appearance of a cable between the two routers
+- Figure 3-3 shows a conceptual view of a small part of the telco network
+- Telcos put their equipment in buildings called central offices (COs). The telco installs cables from the CO to most every other building in the city, expecting to sell services to the people in those buildings one day
+- The telco would then configure its switches to use some of the capacity on each cable to send data in both directions, creating the equivalent of a crossover cable between the two routers
+
+<img src="images/ch1/leasedline3.png" alt="" width="50%"/>
+
+- The term leased line emphasizes the fact that the telco leases the use of the leased line to a customer, but the customer does not permanently own the line
+- Many names exist for leased lines including:
+  - **Leased circuit, Circuit**: The words line and circuit are often used as synonyms in telco terminology; circuit makes reference to the electrical circuit between the two endpoints
+  - **Serial link, Serial line**: The words link and line are also often used as synonyms. Serial in this case refers to the fact that the bits flow serially and that routers use serial interfaces
+  - **Point-to-point link, Point-to-point line**: These terms refer to the fact that the topology stretches between two points, and two points only (Some older leased lines allowed more than two devices)
+  - **T1**: This specific type of leased line transmits data at 1.544 megabits per second (1.544 Mbps)
+  - **WAN link, Link**: Both of these terms are very general, with no reference to any specific technology
+  - **Private line**: This term refers to the fact that the data sent over the line cannot be copied by other telco customers, so the data is private
+
+## Data-Link Details of Leased Lines 
+- A leased line provides a Layer 1 service
+- Routers on the ends of the line use one of two data-link protocols: High Level Data Link Control (HDLC) or Point-to-Point Protocol (PPP)
+- All data-link protocols perform a similar role: to control the correct delivery of data over a physical link of a particular type
+- For example, the Ethernet data-link protocol uses a destination address field to identify the correct device that should receive the data and an FCS field that allows the receiving device to determine whether the data arrived correctly
+- Figure 3-4 shows the HDLC frame format as an example, with Table 3-3 that follows describing the fields
+- However, note that HDLC and PPP have a similar frame format, although the newer PPP (defined in the 1990s) has more features and functions (plus additional optional headers) than the older HDLC (defined in the 1970s)
+
+<img src="images/ch1/hdlc.png" alt="" width="45%"/>
+
+<img src="images/ch1/hdlc2.png" alt="" width="50%"/>
+
+
+
+
+
+
+
+
 
 
 
