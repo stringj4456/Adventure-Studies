@@ -219,6 +219,26 @@
 
 <img src="images/ch1/hdlc2.png" alt="" width="50%"/>
 
+## How Routers Use a WAN Data Link
+- Leased lines connect to routers, and routers focus on delivering packets to a destination host
+- However, routers physically connect to both LANs and WANs, with those LANs and WANs requiring that data be sent inside data-link frames
+- The TCP/IP network layer focuses on forwarding IP packets from the sending host to the destination host. The underlying LANs and WANs just act as a way to move the packets to the next router or end-user device
+- Figure 3-6 shows some of the data-link layer logic used by the hosts and routers
+- Basically, three separate data-link layer steps encapsulate the packet, inside a data-link frame, over three hops through the internetwork: from PC1 to R1, from R1 to R2, and from R2 to PC2
+
+<img src="images/ch1/routewan.png" alt="" width="52%"/>
+
+- Following the steps in the figure, again for a packet sent by PC1 to PC2’s IP address: 
+  1. To send the IP packet to Router R1 next, PC1 encapsulates the IP packet in an Ethernet frame that has the destination MAC address of R1
+  2. Router R1 de-encapsulates (removes) the IP packet from the Ethernet frame, encapsulates (inserts) the packet into an HDLC frame using an HDLC header and trailer, and forwards the HDLC frame to Router R2 next
+  3. Router R2 de-encapsulates (removes) the IP packet from the HDLC frame, encapsulates (inserts) the packet into an Ethernet frame that has the destination MAC address of PC2, and forwards the Ethernet frame to PC2
+- In summary, a leased line with HDLC creates a WAN link between two routers so that they can forward packets for the devices on the attached LANs
+- The leased line itself provides the physical means to transmit the bits, in both directions
+- The HDLC frames provide the means to encapsulate the network layer packet correctly so that it crosses the link between routers
+- By today’s standards, leased-line WAN links are slow, with the fastest leased line speeds in the tens of megabits per second (Mbps)
+
+
+
 
 
 
