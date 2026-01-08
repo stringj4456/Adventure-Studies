@@ -237,6 +237,51 @@
 - The HDLC frames provide the means to encapsulate the network layer packet correctly so that it crosses the link between routers
 - By today’s standards, leased-line WAN links are slow, with the fastest leased line speeds in the tens of megabits per second (Mbps)
 
+## Ethernet as a WAN Technology
+- Today, many WAN service providers (SP) offer WAN services that take advantage of Ethernet
+- SPs offer a wide variety of these Ethernet WAN services, with many different names. But all of them use a similar model, with Ethernet used between the customer site and the SP’s network, as shown in Figure 3-7
+
+<img src="images/ch1/ethwan.png" alt="" width="52%"/>
+
+- The customer connects to an Ethernet link using a router interface
+- The (fiber) Ethernet link leaves the customer building and connects to some nearby SP location called a point of presence (PoP)
+- Inside the SP’s network, the SP uses any technology that it wants to create the specific Ethernet WAN services
+
+## Ethernet WANs That Create a Layer 2 Service 
+- The most basic Ethernet WAN service, one that works much like an Ethernet crossover cable—just over a WAN. In other words: 
+  - Logically, behaves like a point-to-point connection between two routers
+  - Physically, behaves as if a physical fiber Ethernet link existed between the two routers 
+- Common Ethernet WAN service names:
+  - **Ethernet WAN**: A generic name to differentiate it from an Ethernet LAN
+  - **Ethernet point-to-point link**: A term that emphasizes the topology of a typical Ethernet WAN link that has exactly two endpoints: the routers on the two ends of the link
+  - **Ethernet Line Service (E-Line)**: A term from the Metro Ethernet Forum (MEF) for the kind of point-to-point Ethernet WAN service shown throughout this book
+  - **Ethernet over MPLS (EoMPLS)**: A term that refers to Multiprotocol Label Switching (MPLS), a technology that can be used to create the Ethernet service for the customer
+- If you can imagine two routers, with a single Ethernet link between the two routers, you understand what this particular Ethernet WAN service does, as shown in Figure 3- 8
+- In this case, the two routers, R1 and R2, connect with an Ethernet WAN service instead of a serial link
+- The routers use Ethernet interfaces, and they can send data in both directions at the same time
+- Physically, each router actually connects to some SP PoP, as shown earlier in - Figure 3-7, but logically, the two routers can send Ethernet frames to each other over the link
+
+<img src="images/ch1/ethwan2.png" alt="" width="55%"/>
+
+## How Routers Route IP Packets Using Ethernet WAN Links
+- WANs, by their very nature, give IP routers a way to forward IP packets from a LAN at one site, over the WAN, and to another LAN at another site
+- The routing logic works the same whether the WAN link happens to be a serial link or an Ethernet WAN link, with the encapsulation details being slightly different
+- With an Ethernet WAN link, the link uses Ethernet for both Layer 1 and Layer 2 functions, so the routers encapsulate using the familiar Ethernet header and trailer, as shown in the middle of Figure 3-9
+
+<img src="images/ch1/ethwan3.png" alt="" width="52%"/>
+
+- The figure shows the same three routing steps as shown with the serial link in the earlier Figure 3-6
+- In this case, all three routing steps use the same Ethernet (802.3) protocol, however note that each frame’s data-link header and trailer are different
+- Each router discards the old data-link header/trailer and adds a new set, as described in these steps:
+  1. To send the IP packet to Router R1 next, PC1 encapsulates (inserts) the IP packet in an Ethernet frame that has the destination MAC address of R1. 
+  2. Router R1 de-encapsulates (removes) the IP packet from the Ethernet frame and encapsulates (inserts) the packet into a new Ethernet frame, with a new Ethernet header and trailer. The destination MAC address is R2’s G0/0 MAC address, and the source MAC address is R1’s G0/1 MAC address. R1 forwards this frame over the Ethernet WAN service to R2 next
+  3. Router R2 de-encapsulates (removes) the IP packet from the Ethernet frame, encapsulates (inserts) the packet into an Ethernet frame that has the destination MAC address of PC2, and forwards the Ethernet frame to PC2
+
+
+
+
+
+
 
 
 
