@@ -312,6 +312,21 @@
   - R2 sends a similar routing update to R1, causing R1 to learn about subnet 150.150.4.0
   - R1 adds a route for subnet 150.150.4.0 to its routing table. The route lists R1’s own Serial0 as the outgoing interface and R2 as the next-hop router IP address (150.150.2.7)
 
+## The Address Resolution Protocol
+- TCP/IP defines the Address Resolution Protocol (ARP) as the method by which any host or router on a LAN can dynamically learn the MAC address of another IP host or router on the same LAN
+- ARP defines a protocol that includes the ARP Request, which is a message that makes the simple request “if this is your IP address, please reply with your MAC address”
+- ARP also defines the ARP Reply message, which indeed lists both the original IP address and the matching MAC address
+- The figure shows the ARP Request sent by router R3, on the left of the figure, as a LAN broadcast
+- All devices on the LAN will then process the received frame
+- On the right, at Step 2, host PC2 sends back an ARP Reply, identifying PC2’s MAC address
+
+<img src="images/ch1/arp.png" alt="" width="50%"/>
+
+- Hosts and routers remember the ARP results, keeping the information in their ARP cache or ARP table
+- A host or router only needs to use ARP occasionally, to build the ARP cache the first time
+- Each time a host or router needs to send a packet encapsulated in an Ethernet frame, it first checks its ARP cache for the correct IP address and matching MAC address
+- Hosts and routers will let ARP cache entries time out to clean up the table, so occasional ARP Requests can be seen
+- You can see the contents of the ARP cache on most PC operating systems by using the **arp -a** command from a command prompt
 
 
 
