@@ -328,6 +328,18 @@
 - Hosts and routers will let ARP cache entries time out to clean up the table, so occasional ARP Requests can be seen
 - You can see the contents of the ARP cache on most PC operating systems by using the **arp -a** command from a command prompt
 
+## Accessing the IOS XE CLI
+- To create IOS XE, Cisco took IOS and modernized the internal software architecture
+- IOS XE, often referred to simply as XE, has features to improve uptime and the ability to maintain devices without requiring rebooting (reloading) the device
+- For the purposes of CCNA, almost everything you see with commands and the CLI applies to older IOS-based switches as well as newer switches that use IOS XE
+- The switch CLI can be accessed through three popular methods: the console, Telnet, and Secure Shell (SSH)
+- The console is a physical port built specifically to allow access to the CLI
+- Console access requires both a physical connection between a PC (or other user device) and the switch’s console port, as well as some software on the PC
+- Figure 4-3 depicts the options
+
+<img src="images/ch1/console.png" alt="" width="50%"/>
+
+
 
 
 
