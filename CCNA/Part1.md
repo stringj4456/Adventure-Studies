@@ -290,6 +290,29 @@
 ## The IP Header
 <img src="images/ch1/ipheader.png" alt="" width="50%"/>
 
+## How IP Routing Protocols Help IP Routing 
+- The best method for routers to know all the useful routes is to configure the routers to use the same IP routing protocol
+- If you enable the same routing protocol on all the routers in a TCP/IP internetwork, with the correct settings, the routers will send routing protocol messages to each other
+- As a result, all the routers will learn routes for all the IP networks and subnets in the TCP/IP internetwork
+- All the routing protocols use the same general steps for learning routes:
+  1. Each router, independent of the routing protocol, adds a route to its routing table for each subnet directly connected to the router
+  2. Each router’s routing protocol tells its neighbors about the routes in its routing table, including the directly connected routes and routes learned from other routers
+  3. Each router’s routing protocol listens to messages from neighboring routers and learns routes, with the next-hop router of that route typically being the neighbor from which the route was learned
+- Note that at the final step, routers may have to choose between multiple routes to reach a single subnet
+- When that happens, routers place the best currently available route to reach a subnet (based on a measurement called a metric) into the routing table
+- Figure 3-13 shows an example of how a routing protocol works
+
+<img src="images/ch1/routingprotocol.png" alt="" width="50%"/>
+
+- Below lists out the steps for the above image
+  - Subnet 150.150.4.0 exists as a subnet at the bottom of the figure, connected to Router R3
+  - R3 adds a connected route for 150.150.4.0 to its IP routing table; this happens without help from the routing protocol
+  - R3 sends a routing protocol message, called a routing update, to R2, causing R2 to learn about subnet 150.150.4.0
+  - R2 adds a route for subnet 150.150.4.0 to its routing table
+  - R2 sends a similar routing update to R1, causing R1 to learn about subnet 150.150.4.0
+  - R1 adds a route for subnet 150.150.4.0 to its routing table. The route lists R1’s own Serial0 as the outgoing interface and R2 as the next-hop router IP address (150.150.2.7)
+
+
 
 
 
