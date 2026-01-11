@@ -371,6 +371,22 @@
   - 1 stop bit
 - Note that the last three parameters are referred to collectively as 8N1
 
+## User and Enable (Privileged) Modes
+- All three CLI access methods covered so far (console, Telnet, and SSH) place the user in an area of the CLI called user EXEC mode
+- User EXEC mode, sometimes also called **user mode**, allows the user to look around but not break anything
+- Cisco IOS supports a more powerful EXEC mode called privileged mode (also known as **enable mode**)
+- If the command prompt ends with a **>**, the user is in user mode; if it ends with a **#**, the user is in enable mode
+- The commands that can be used in either user mode or enable mode are called EXEC commands
+
+## Password Security for CLI Access from the Console
+- Simple passwords can be configured at two points in the login process from the console: when the user connects from the console, and when any user moves to enable mode (using the **enable** EXEC command)
+- The command **show running-config** lists the current configuration in the switch
+- Use **hostname** ***hostname*** to set the switches hostname
+- Use **enable secret** ***password*** to define the password that all users must use to reach enable mode
+- Use **password** ***password*** to define the password the console user must type when prompted
+- **line console 0** is the command that identifies the console, basically meaning “these next commands apply to the console only”
+- The **login** command tells IOS to perform simple password checking (at the console)
+- Remember, by default, the switch does not ask for a password for console users
 
 
 
