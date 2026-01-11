@@ -339,6 +339,24 @@
 
 <img src="images/ch1/console.png" alt="" width="50%"/>
 
+## Cabling the Console Connection
+- The physical console connection, both old and new, uses three main components: the physical console port on the switch, a physical serial port on the PC, and a cable that works with the console and serial ports
+- Most PCs today use a familiar standard USB connector for the console connection (often a USB mini-B connector on the switch)
+- In the simplest form, you can use any USB port on the PC, with a USB cable, connected to the USB console port on the switch or router
+ 
+<img src="images/ch1/consoleconnect.png" alt="" width="50%"/>
+
+- The case on the far left in the figure shows an older console connection, typical of how you would have connected to a switch over ten years ago
+- Before PCs used USB ports, they used serial ports for serial communications
+- The PC serial port had a D-shell connector (roughly rectangular) with nine pins (often called a DB-9)
+- The console port looks like any Ethernet RJ-45 port (but is typically colored in blue and with the word console beside it on the switch)
+- The older-style cabling used a standard RJ-45 to DB-9 converter plug and a UTP rollover cable with RJ-45 connectors on each end
+- The rollover pinout uses eight wires, rolling the wire at pin 1 to pin 8, pin 2 to pin 7, pin 3 to pin 6, and so on
+- The center case in the figure shows a variation that you might use on occasion that combines the cabling concepts from the left and right cases in the figure
+- You use the USB port on your PC but the RJ-45 console port on the switch
+- In fact, for some very old switch models, the switch has only an RJ-45 console port but no USB console port, requiring this kind of console cabling
+- In this case, you need a USB converter plug that converts from the older rollover console cable (with RJ-45 connectors) to a USB connector
+- When using the USB options, you typically also need to install a software driver so that your PC’s OS knows that the device on the other end of the USB connection is the console of a Cisco device
 
 
 
