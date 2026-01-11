@@ -388,6 +388,41 @@
 - The **login** command tells IOS to perform simple password checking (at the console)
 - Remember, by default, the switch does not ask for a password for console users
 
+## CLI Help Features
+- Table 4-3 summarizes command-recall help options available at the CLI
+- Note that, in the first column, **command** represents any command. Likewise, **parm** represents a command’s parameter
+- For example, the third row lists command **?**, which means that commands such as **show ?** and **copy ?** would list help for the show and copy commands, respectively
+
+<img src="images/ch1/help1.png" alt="" width="50%"/>
+
+- When you enter the ?, the Cisco IOS CLI reacts immediately; that is, you don’t need to press the Enter key or any other keys
+- When ? is entered in user mode, the commands allowed in user mode are displayed, but commands available only in enable mode (not in user mode) are not displayed
+- Cisco IOS stores the commands that you enter in a history buffer, storing ten commands by default
+- The CLI also allows you to move backward and forward in the historical list of commands and then edit the command before reissuing it
+- Table 4-4 lists the commands used to manipulate previously entered commands
+
+<img src="images/ch1/help2.png" alt="" width="50%"/>
+
+## The debug and show Commands
+- The **show** command has a large variety of options, and with those options, you can find the status of almost every feature of Cisco IOS
+- Essentially, the show command lists the currently known facts about the switch’s operational status
+  - Ex. **show mac address-table dynamic**
+- The **debug** command also tells the user details about the operation of the switch
+- However, while the show command lists status information at one instant of time—more like a photograph— the debug command acts more like a live video camera feed
+- Once you issue a debug command, IOS remembers, issuing messages over time as events continue to occur
+- Any switch user can choose to receive those messages, with the switch sending the messages to the console by default
+
+## Configuring Cisco IOS Software
+- Configuration mode accepts configuration commands—commands that tell the switch the details of what to do and how to do it
+- User and privileged modes accept EXEC commands, which return output, or possibly take an action like reloading the switch, but commands in these modes do not change any configuration settings
+- Commands entered in configuration mode update the active configuration file
+- These changes to the configuration occur immediately each time you press the Enter key at the end of a command
+- Figure 4-11 illustrates the navigation among configuration mode, user EXEC mode, and privileged EXEC mode
+
+<img src="images/ch1/modes.png" alt="" width="50%"/>
+
+
+
 
 
 
