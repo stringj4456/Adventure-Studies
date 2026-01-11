@@ -358,6 +358,18 @@
 - In this case, you need a USB converter plug that converts from the older rollover console cable (with RJ-45 connectors) to a USB connector
 - When using the USB options, you typically also need to install a software driver so that your PC’s OS knows that the device on the other end of the USB connection is the console of a Cisco device
 
+## Configuring a Terminal Emulator 
+- After the PC is physically connected to the console port, a terminal emulator software package must be installed and configured on the PC
+- The terminal emulator software treats all data as text. It accepts the text typed by the user and sends it over the console connection to the switch
+- Similarly, any bits coming into the PC over the console connection are displayed as text for the user to read
+- The emulator must be configured to use the PC’s serial port to match the settings on the switch’s console port settings
+- The default console port settings on a switch are as follows
+  - 9600 bits/second
+  - No hardware flow control 
+  - 8-bit ASCII
+  - No parity bits
+  - 1 stop bit
+- Note that the last three parameters are referred to collectively as 8N1
 
 
 
