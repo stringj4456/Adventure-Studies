@@ -450,9 +450,25 @@
 
 - Generally, Cisco uses global commands for settings that apply to the entire switch and subcommands that apply to one component or feature
 
+## Storing Switch Configuration Files
+- To store information that must be retained when the switch loses power or is reloaded, Cisco switches use several types of more permanent memory, none of which has any moving parts
+- The following list details the four main types of memory found in Cisco switches, as well as the most common use of each type:
+  - **RAM**: Sometimes called DRAM, for dynamic random-access memory, RAM is used by the switch just as it is used by any other computer: for working storage. The running (active) configuration file is stored here 
+  - **Flash memory**: Either a chip inside the switch or a removable memory card, flash memory stores fully functional Cisco IOS images and is the default location where the switch gets its Cisco IOS at boot time. Flash memory also can be used to store any other files, including backup copies of configuration files
+  - **ROM**: Read-only memory (ROM) stores a bootstrap (or boothelper) program that is loaded when the switch first powers on. This bootstrap program then finds the full Cisco IOS image and manages the process of loading Cisco IOS into RAM, at which point Cisco IOS takes over operation of the switch
+  - **NVRAM**: Nonvolatile RAM (NVRAM) stores the initial or startup configuration file that is used when the switch is first powered on and when the switch is reloaded 
+- Figure 4-13 summarizes this same information in a briefer and more convenient form
 
+<img src="images/ch1/figure413.png" alt="" width="50%"/>
 
+- Cisco IOS stores the collection of configuration commands in a configuration file
+- Switches use multiple configuration files—one file for the initial configuration used when powering on, and another configuration file for the active, currently used running configuration as stored in RAM
+- Table 4-6 lists the names of these two files, their purpose, and their storage location
 
+<img src="images/ch1/config.png" alt="" width="50%"/>
+
+- Essentially, when you use configuration mode, you change only the running-config file
+- If you want to keep the configuration, you have to copy the running-config file into NVRAM, overwriting the old startup-config file
 
 
 
