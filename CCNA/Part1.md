@@ -421,6 +421,36 @@
 
 <img src="images/ch1/modes.png" alt="" width="50%"/>
 
+## Configuration Submodes and Contexts
+- When using configuration mode, you move from the initial mode—global configuration mode—into subcommand modes
+- Context-setting commands move you from one configuration subcommand mode, or context, to another
+- These context-setting commands tell the switch the topic about which you will enter the next few configuration commands
+- The **interface** command is one of the most commonly used context-setting configuration commands
+- For example, the CLI user could enter interface configuration mode by entering the **interface FastEthernet 0/1** configuration command
+- Asking for help in interface configuration mode displays only commands that are useful when configuring Ethernet interfaces
+- Commands used in this context are called subcommands—or, in this specific case, interface subcommands
+- Consider Example 4-4, which shows the following:
+  - Movement from enable mode to global configuration mode by using the **configure terminal** EXEC command
+  - Use of a **hostname Fred** global configuration command to configure the switch’s name. Using a global command from global configuration mode leaves you in global configuration mode
+  - Movement from global configuration mode to console line configuration mode (using the **line console 0** command). The **line** command is another of the small set of context-setting commands that move you to another submode
+  - Setting the console’s simple password to hope (using the **password hope** line subcommand). Using a subcommand while in that submode leaves the command prompt in that submode
+  - Movement from console configuration mode to interface configuration mode (using the **interface ***type number***** command). The interface command is another of the small set of context-setting commands that move you to another submode
+  - Setting the speed to 100 Mbps for interface Fa0/1 (using the **speed 100** interface subcommand)
+  - Movement from interface configuration mode back to global configuration mode (using the **exit** command)
+
+<img src="images/ch1/ex4.png" alt="" width="50%"/>
+
+- Table 4-5 shows the most common command prompts in configuration mode, the names of those modes, and the context-setting commands used to reach those modes
+
+<img src="images/ch1/table45.png" alt="" width="50%"/>
+
+- Figure 4-12 shows most of the navigation between global configuration mode and the four configuration submodes listed in Table 4-5
+
+<img src="images/ch1/table412.png" alt="" width="50%"/>
+
+- Generally, Cisco uses global commands for settings that apply to the entire switch and subcommands that apply to one component or feature
+
+
 
 
 
