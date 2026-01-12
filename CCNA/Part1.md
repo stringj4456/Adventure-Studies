@@ -480,8 +480,35 @@
 - Once the startup-config file is erased, you can reload or power off/on the switch, and it will boot with the now-empty startup configuration
 - To clear out the running-config file, simply erase the startup-config file, and then reload the switch, and the running-config will be empty at the end of the process
 
+## Overview of Switching Logic
+- LAN switches receive Ethernet frames and then make a switching decision: either forward the frame out to some other ports or ignore the frame
+- To accomplish this primary mission, switches perform three actions: 
+  - Deciding when to forward a frame or when to filter (not forward) a frame, based on the destination MAC address
+  - Preparing to forward future frames by learning the source MAC address of each frame received by the switch
+  - Cooperating with all switches to prevent the endless looping of frames by using Spanning Tree Protocol (STP)
+- The first action is the switch’s primary job, whereas the other two items are overhead functions
 
+## Forwarding Known Unicast Frames
+- To decide whether to forward a frame, a switch uses a dynamically built table that lists MAC addresses and outgoing interfaces
+- Switches compare the frame’s destination MAC address to this table to decide whether the switch should forward a frame or simply ignore it
+- For example, consider the simple network shown in Figure 5-3, with Fred sending a frame to Barney
 
+<img src="images/ch1/unicast.png" alt="" width="50%"/>
+
+- A switch’s MAC address table is also called the switching table, or bridging table, or even the content-addressable memory (CAM) table
+- A switch’s MAC address table lists the location of each MAC relative to that one switch
+- In LANs with multiple switches, each switch makes an independent forwarding decision based on its own MAC address table
+- The frames are called **known unicast frames**, or simply known unicasts, because the destination address is a unicast address, and the destination is known
+
+## Learning MAC Addresses
+- Switches build the address table by listening to incoming frames and examining the source MAC address in the frame
+- If a frame enters the switch and the source MAC address is not in the MAC address table, the switch creates an entry in the table
+- That table entry lists the interface from which the frame arrived
+- Figure 5-6 depicts the same single-switch topology network as Figure 5-3, but before the switch has built any address table entries. The figure shows the first two frames sent in this network: first a frame from Fred addressed to Barney, and then Barney’s response, addressed to Fred
+
+<img src="images/ch1/figure56.png" alt="" width="50%"/>
+
+- Learning always occurs by looking at the source MAC address in the frame and adds the incoming interface as the associated port
 
 
 
