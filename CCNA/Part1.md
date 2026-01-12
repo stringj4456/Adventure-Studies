@@ -510,6 +510,12 @@
 
 - Learning always occurs by looking at the source MAC address in the frame and adds the incoming interface as the associated port
 
+## Flooding Unknown Unicast and Broadcast Frames
+- When there is no matching entry in the table, switches forward the frame out all interfaces (except the incoming interface) using a process called **flooding**
+- The frame whose destination address is unknown to the switch is called an **unknown unicast frame**, or simply an unknown unicast
+- Switches flood unknown unicast frames
+- The idea is simple: if you do not know where to send it, send it everywhere, to deliver the frame. And, by the way, that device will likely then send a reply—and then the switch can learn that device’s MAC address and forward future frames out one port as a known unicast frame
+- Switches also flood LAN **broadcast frames** (frames destined to the Ethernet broadcast address of FFFF.FFFF.FFFF) because this process helps deliver a copy of the frame to all devices in the LAN
 
 
 
