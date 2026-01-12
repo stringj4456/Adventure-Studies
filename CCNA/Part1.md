@@ -470,6 +470,15 @@
 - Essentially, when you use configuration mode, you change only the running-config file
 - If you want to keep the configuration, you have to copy the running-config file into NVRAM, overwriting the old startup-config file
 
+## Copying and Erasing Configuration Files
+- The configuration process updates the running-config file, which is lost if the router loses power or is reloaded
+- The EXEC command **copy running-config startup-config** backs up the running config to the startup-config file. This command overwrites the current startup-config file with what is currently in the running-config file
+- You can erase the startup-config file using three different commands:
+  - **write erase**
+  - **erase startup-config** 
+  - **erase nvram:** 
+- Once the startup-config file is erased, you can reload or power off/on the switch, and it will boot with the now-empty startup configuration
+- To clear out the running-config file, simply erase the startup-config file, and then reload the switch, and the running-config will be empty at the end of the process
 
 
 
