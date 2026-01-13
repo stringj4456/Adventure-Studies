@@ -553,8 +553,28 @@
 - One particular option, the counters option, lists statistics about incoming and outgoing frames on the interfaces
 - In particular, it lists the number of unicast, multicast, and broadcast frames (both the in and out directions), and a total byte count for those frames
 
+## Finding Entries in the MAC Address Table
+- If  you know the MAC address, you can search for it—just type in the MAC address at the end of the command **show mac address-table**
+- All you have to do is include the address keyword, followed by the actual MAC address
+  - For example, **show mac address-table dynamic address 0200.1111.1111**
+- You may also want to find the MAC address table entries for one VLAN, which can be done with the vlan parameter, followed by the VLAN number
+  - For example, **show mac address-table dynamic vlan 1**
 
-
+## Managing the MAC Address Table (Aging, Clearing) 
+- Switches remove entries that have not been used for a defined number of seconds (default of 300 seconds)
+- To do that, switches keep a timer for each MAC table entry that increases over time
+- However, the switch resets the timer to 0 when it receives another frame with that same source MAC address
+- Timers that have not been reset continue to grow, and once a timer reaches the aging setting, the switch removes the MAC table entry
+- The aging time can be configured to a different time, globally and per-VLAN using the **mac address-table aging-time** ***time-in-seconds [vlan vlan-number]*** global configuration command
+- Each switch also removes the oldest table entries, even if they are younger than the aging time setting, if the table fills
+- The MAC address table uses content-addressable memory (CAM), a physical memory that has great table lookup capabilities
+- The size of the table depends on the size of the CAM in a particular model of switch and based on some configurable settings in the switch
+- You can remove the dynamic entries from the MAC address table with the **clear mac address-table dynamic** command
+- Note that the show commands in this chapter can be executed from user and enable mode, but the clear command happens to be an enable mode command
+- The command also allows parameters to limit the types of entries cleared, as follows:
+  - By VLAN: **clear mac address-table dynamic vlan** ***vlan-number***
+  - By Interface: **clear mac address-table dynamic interface** ***interface-id***
+  - By MAC address: **clear mac address-table dynamic address** ***mac-address***
 
 
 
