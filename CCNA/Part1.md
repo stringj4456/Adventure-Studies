@@ -576,16 +576,35 @@
   - By Interface: **clear mac address-table dynamic interface** ***interface-id***
   - By MAC address: **clear mac address-table dynamic address** ***mac-address***
 
+## Securing the Switch CLI 
+- By default, a user can connect to the console and reach enable mode with no security checks and no passwords required
+- In contrast, the default settings disallow all Telnet and Secure Shell (SSH) users from even seeing a login prompt
+- Securing the CLI includes protecting access to enable mode, because from enable mode, an attacker could reload the switch or change the configuration
+- Protecting user mode is also important, because attackers can see the status of the switch, learn about the network, and find new ways to attack the network
 
+## Securing User Mode and Privileged Mode with Simple Passwords 
+- Most people use a simple shared password for access to lab gear
+- This method uses a password only—with no username—with one password for console users and a different password for Telnet users
+- Console users must supply the console password, as configured in console line configuration mode
+- Telnet users must supply the Telnet password, also called the vty password, so called because the configuration sits in vty line configuration mode
+- Figure 6-1 summarizes these options for using shared passwords from the perspective of the user logging in to the switch
 
+<img src="images/ch1/pw1.png" alt="" width="50%"/>
 
+- In addition, Cisco switches protect enable mode (also called privileged mode) with yet another shared password called the enable password
+- From the perspective of the network engineer connecting to the CLI of the switch, once in user mode, the user types the **enable** EXEC command
+- This command prompts the user for this enable password; if the user types the correct password, IOS moves the user to enable mode
+- Example 6-1 shows an example of the user experience of logging in to a switch from the console when the shared console password and the shared enable password have both been set
 
+<img src="images/ch1/pw2.png" alt="" width="50%"/>
 
+- To configure the shared passwords for the console, Telnet, and for enable mode, you need to configure several commands
+- Figure 6-2 shows the configuration of all three of these passwords
 
+<img src="images/ch1/pw3.png" alt="" width="50%"/>
 
-
-
-
-
-
-
+- The console and vty password configuration sets the password based on the context: console mode for the console (line con 0), and vty line configuration mode for the Telnet password (line vty 0 15)
+- Then inside console mode and vty mode, respectively, the two commands in each mode are as follows: 
+  - **password** ***password-value***: Defines the actual password used on the console or vty 
+  - **login**: Tells IOS to enable the use of a simple shared password (with no username) on this line (console or vty), so that the switch asks the user for a password
+- The command to configure the enable password is a global configuration command
