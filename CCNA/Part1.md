@@ -529,8 +529,29 @@
 - Blocking means that the interface cannot forward or receive data frames, while forwarding means that the interface can send and receive data frames
 - If a correct subset of the interfaces is blocked, only a single currently active logical path exists between each pair of LANs
 
+## LAN Switching Summary
+1. Switches forward frames based on the destination MAC address: 
+   - If the destination MAC address is a broadcast, multicast, or unknown destination unicast (a unicast not listed in the MAC table), the switch floods the frame
+   - If the destination MAC address is a known unicast address (a unicast address found in the MAC table):
+     - If the outgoing interface listed in the MAC address table is different from the interface in which the frame was received, the switch forwards the frame out the outgoing interface
+     - If the outgoing interface is the same as the interface in which the frame was received, the switch filters the frame, meaning that the switch simply ignores the frame and does not forward it. 
+2. Switches learn MAC address table entries based on the source MAC address:
+   - For each received frame, note the source MAC address and incoming interface ID
+   - If not yet in the MAC address table, add an entry listing the MAC address and incoming interface 
+3. Switches use STP to prevent loops by causing some interfaces to block, meaning that they do not send or receive frames
 
+## Demonstrating MAC Learning
+- To see a switch’s MAC address table, use the **show mac address-table** command
+- With no additional parameters, this command lists all known MAC addresses in the MAC table, including some overhead static MAC addresses that you can ignore
+- To see all the dynamically learned MAC addresses only, instead use the **show mac address-table dynamic** command
 
+## Switch Interfaces
+- You can easily check the status of interfaces with the **show interfaces status** command
+- You can see the status for a single interface in a couple of ways. For instance, for F0/1, the command **show interfaces f0/1 status** lists the status in a single line of output
+- The **show interfaces f0/1** command (without the **status** keyword) displays a detailed set of messages about the interface
+- The **show interfaces** command has a large number of options
+- One particular option, the counters option, lists statistics about incoming and outgoing frames on the interfaces
+- In particular, it lists the number of unicast, multicast, and broadcast frames (both the in and out directions), and a total byte count for those frames
 
 
 
