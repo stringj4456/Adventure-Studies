@@ -517,6 +517,17 @@
 - The idea is simple: if you do not know where to send it, send it everywhere, to deliver the frame. And, by the way, that device will likely then send a reply—and then the switch can learn that device’s MAC address and forward future frames out one port as a known unicast frame
 - Switches also flood LAN **broadcast frames** (frames destined to the Ethernet broadcast address of FFFF.FFFF.FFFF) because this process helps deliver a copy of the frame to all devices in the LAN
 
+## Avoiding Loops Using Spanning Tree Protocol
+- To prevent looping frames, STP blocks some ports from forwarding frames so that only one active path exists between any pair of LAN segments
+- Figure 5-8 shows an unknown unicast frame, sent by Larry to Bob, which loops forever because the network has redundancy but no STP
+- Note that the figure shows one direction of the looping frame only, just to reduce clutter, but a copy of the frame would also loop the other direction
+
+<img src="images/ch1/stp.png" alt="" width="50%"/>
+
+- While the flooding process is a good mechanism for forwarding unknown unicasts and broadcasts, the continual flooding of traffic frames as in the figure can completely congest the LAN to the point of making it unusable
+- STP causes each interface on a switch to settle into either a blocking state or a forwarding state
+- Blocking means that the interface cannot forward or receive data frames, while forwarding means that the interface can send and receive data frames
+- If a correct subset of the interfaces is blocked, only a single currently active logical path exists between each pair of LANs
 
 
 
