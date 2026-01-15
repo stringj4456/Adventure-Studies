@@ -696,3 +696,15 @@
 - If you do, the VLAN interface will not reach an up/up state, and the switch will not have the physical ability to communicate outside the switch
 - Configuring the IP address (and mask) on one VLAN interface allows the switch to send and receive IP packets with other hosts in a subnet that exists on that VLAN; however, the switch cannot communicate outside the local subnet without another configuration setting called the default gateway
 
+## Configuring IPv4 on a Switch
+- The following steps list the commands used to configure IPv4 on a switch, assuming that the IP address is configured to be in VLAN 1, with Example 6-7 that follows showing an example configuration
+  1. Use the **interface vlan 1** command in global configuration mode to enter interface VLAN 1 configuration mode
+  2. Use the **ip address** ***ip-address mask*** command in interface configuration mode to assign an IP address and mask
+  3. Use the **no shutdown** command in interface configuration mode to enable the VLAN 1 interface if it is not already enabled
+  4. Add the **ip default-gateway** ***ip-address*** command in global configuration mode to configure the default gateway
+  5. (Optional) Add the **ip name-server** ***ip-address1 ip-address2*** … command in global configuration mode to configure the switch to use the Domain Name System (DNS) to resolve names into their matching IP address
+
+<img src="images/ch1/ipconfig.png" alt="" width="50%"/>
+
+- To administratively enable an interface on a switch, use the **no shutdown** interface subcommand; to disable an interface, use the **shutdown** interface subcommand
+- This command can be used on the physical Ethernet interfaces that the switch uses to switch Ethernet messages in addition to the VLAN interface shown here in this example
