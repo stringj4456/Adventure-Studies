@@ -621,3 +621,40 @@
 - Then, to enable this different type of console or Telnet security, simply enable this login security method with the **login local** line
 - Basically, this command means “use the local list of usernames for login”
 - Use the **no password** subcommand to remove any existing simple shared passwords, just for good housekeeping of the configuration file
+
+## Securing Remote Access with Secure Shell 
+- SSH can use the same local login authentication method as Telnet, with the locally configured username and password
+- SSH cannot rely on authentication methods that do not include a username, like shared passwords
+- The configuration to support local usernames for Telnet, as shown previously also enables local username authentication for incoming SSH connections
+- Figure 6-5 shows one example configuration of what is required to support SSH
+- Figure 6-5 also shows three additional commands required to complete the configuration of SSH on the switch
+
+<img src="images/ch1/ssh.png" alt="" width="50%"/>
+
+- IOS uses the three SSH-specific configuration commands in the figure to create the SSH encryption keys
+- The SSH server uses the fully qualified domain name (FQDN) of the switch as input to create that key
+- The switch creates the FQDN from the hostname and domain name of the switch
+- The **crypto key generate rsa** command, generates the SSH encryption keys
+- The **crypto key** command prompts the user for the key modulus; you could also add the parameters **modulus** ***modulus-value*** to the end of the crypto key command to add this setting on the command
+- Both the Telnet and SSH examples throughout this chapter so far list the **transport input all** subcommand in vty configuration mode
+- The **transport input** command identifies the protocols allowed in the vty ports, with the all keyword including SSH and Telnet
+- Some common options include 
+  - **transport input all** or **transport input telnet ssh**: Support both Telnet and SSH 
+  - **transport input none**: Support neither
+  - **transport input telnet**: Support only Telnet 
+  - **transport input ssh**: Support only SSH
+- Be aware of the traditional defaults: Many older switches defaulted to **transport input all**, while older routers defaulted to **transport input none**, with more recent Cisco switches and routers now defaulting to the more-secure **transport input ssh**
+- The following configuration checklist details the steps for one method to configure a Cisco switch to support SSH using local usernames:
+  1. Configure the switch to generate a matched public and private key pair to use for encryption:
+     - If not already configured, use the **hostname** ***name*** in global configuration mode to configure a hostname for this switch
+     - If not already configured, use the **ip domain name** ***name*** in global configuration mode to configure a domain name for the switch, completing the switch’s FQDN
+     - Use the **crypto key generate rsa** command in global configuration mode (or the **crypto key generate rsa modulus** ***modulus-value*** command to avoid being prompted for the key modulus) to generate the keys. (Use at least a 768-bit key to support SSH version 2)
+  2. (Optional) Use the **ip ssh version 2** command in global configuration mode to override the default of supporting both versions 1 and 2, so that only SSHv2 connections are allowed
+  3. (Optional) If not already configured with the setting you want, configure the vty lines to accept SSH and whether to also allow Telnet:
+     - Use the **transport input ssh** command in vty line configuration mode to allow SSH only
+     - Use the **transport input all** command or **transport input telnet ssh** command in vty line configuration mode to allow both SSH and Telnet
+  4. Use various commands in vty line configuration mode to configure local username login authentication as discussed earlier in this chapter
+
+- Two key commands give some information about the status of SSH on the switch
+- First, the **show ip ssh** command lists status information about the SSH server itself
+- The **show ssh** command then lists information about each SSH client currently connected to the switch
