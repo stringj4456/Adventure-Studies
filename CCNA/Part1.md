@@ -658,3 +658,19 @@
 - Two key commands give some information about the status of SSH on the switch
 - First, the **show ip ssh** command lists status information about the SSH server itself
 - The **show ssh** command then lists information about each SSH client currently connected to the switch
+
+## Enabling and Securing the WebUI
+- Use the **no ip http server** global command to disable the HTTP server (port 80) (traditionally enabled by default)
+- Use the **ip http secure-server** global command to enable the HTTPS server (port 443, uses TLS) (traditionally enabled by default)
+- Use the **ip http authentication local** global command to define the authentication method to use locally defined usernames (traditionally defaults to use the enable password)
+- Use the **username** ***name*** **priority 15 password** ***pass-value*** global command to define one or more usernames with privilege level 15
+- The HTTP server has long allowed three options to log in to a device from a web browser: 
+  - Using the enable password
+  - Using a local username/password
+  - Using the AAA settings on the device
+- More recent IOS versions move away from the enable option
+- To access all the features of the HTTP server (the WebUI), when using local usernames for authentication, you must configure a privilege level of 15 for the user
+- IOS internally defines user privilege levels, by default creating two levels, 0 and 15
+- IOS assigns user mode to level 0 and privileged mode (enable mode) to level 15
+- For the WebUI, if you log in using a username with the privilege 15 option, you receive access to all WebUI features, including the ability to use the CLI configuration mode, install new software, erase the configuration, and reload the router
+- So, the **username** ***name*** **priority 15 password** ***pass-value*** global command creates a way to enter privileged mode immediately (If you omit the priority 15 option and log in to the WebUI with that username you can log in, but you cannot do advanced features, including using the CLI to configure or verify a feature) 
