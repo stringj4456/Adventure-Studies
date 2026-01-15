@@ -673,4 +673,26 @@
 - IOS internally defines user privilege levels, by default creating two levels, 0 and 15
 - IOS assigns user mode to level 0 and privileged mode (enable mode) to level 15
 - For the WebUI, if you log in using a username with the privilege 15 option, you receive access to all WebUI features, including the ability to use the CLI configuration mode, install new software, erase the configuration, and reload the router
-- So, the **username** ***name*** **priority 15 password** ***pass-value*** global command creates a way to enter privileged mode immediately (If you omit the priority 15 option and log in to the WebUI with that username you can log in, but you cannot do advanced features, including using the CLI to configure or verify a feature) 
+- So, the **username** ***name*** **priority 15 password** ***pass-value*** global command creates a way to enter privileged mode immediately (If you omit the priority 15 option and log in to the WebUI with that username you can log in, but you cannot do advanced features, including using the CLI to configure or verify a feature)
+
+## Host and Switch IP Settings
+- A switch needs the same kind of IP settings as a PC with a single Ethernet interface
+- Like a PC, a switch has a real CPU, running an OS (called IOS). The switch obviously has lots of Ethernet ports, but instead of assigning its management IP address to any of those ports, the switch then uses a NIC-like concept called a switch virtual interface (SVI), or more commonly, a VLAN interface, that acts like the switch’s own NIC
+- Then the settings on the switch look something like a host, with the switch configuration assigning IP settings, like an IP address, to this VLAN interface, as shown in Figure 6-6
+
+<img src="images/ch1/sw1.png" alt="" width="50%"/>
+
+- By using interface VLAN 1 for the IP configuration, the switch can then send and receive frames on any of the ports in VLAN 1
+- In a Cisco switch, by default, all ports are assigned to VLAN 1
+- A Layer 2 Cisco LAN switch needs only one IP address for management purposes. However, you can choose to use any VLAN to which the switch connects
+- For example, Figure 6-7 shows a Layer 2 switch with some physical ports in two different VLANs (VLANs 1 and 2)
+- The figure also shows the subnets used on those VLANs. The network engineer could choose to use either
+  - Interface VLAN 1, with an IP address in subnet 192.168.1.0
+  - Interface VLAN 2, with an IP address in subnet 192.168.2.0
+
+<img src="images/ch1/sw2.png" alt="" width="50%"/>
+
+- Note that you should not try to use a VLAN interface for which there are no physical ports assigned to the same VLAN
+- If you do, the VLAN interface will not reach an up/up state, and the switch will not have the physical ability to communicate outside the switch
+- Configuring the IP address (and mask) on one VLAN interface allows the switch to send and receive IP packets with other hosts in a subnet that exists on that VLAN; however, the switch cannot communicate outside the local subnet without another configuration setting called the default gateway
+
