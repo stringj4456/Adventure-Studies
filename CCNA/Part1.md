@@ -608,3 +608,16 @@
   - **password** ***password-value***: Defines the actual password used on the console or vty 
   - **login**: Tells IOS to enable the use of a simple shared password (with no username) on this line (console or vty), so that the switch asks the user for a password
 - The command to configure the enable password is a global configuration command
+
+## Securing User Mode Access with Local Usernames and Passwords
+- Cisco switches support two other login security methods that both use per-user username/password pairs instead of a shared password with no username
+- One method, referred to as local usernames and passwords, configures the username/password pairs locally—that is, in the switch’s configuration
+- Switches support this local username/password option for the console, for Telnet, and even for SSH, but do not replace the enable password used to reach enable mode
+- The configuration to migrate from using the simple shared passwords to instead using local usernames/passwords requires only some small configuration changes, as shown in Figure 6-3
+
+<img src="images/ch1/local.png" alt="" width="50%"/>
+
+- The switch needs to know the list of username/password pairs. To create these, repeatedly use the **username** ***name*** **secret** ***password*** global configuration command
+- Then, to enable this different type of console or Telnet security, simply enable this login security method with the **login local** line
+- Basically, this command means “use the local list of usernames for login”
+- Use the **no password** subcommand to remove any existing simple shared passwords, just for good housekeeping of the configuration file
